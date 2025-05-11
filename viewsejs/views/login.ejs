@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ferremax</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div id="background">
+        <div id="startpage">
+            <form id="login_form" action="/login" method="POST">
+                <span id="header">Iniciar sesión</span>
+                <br><br>
+                <input type="text" name="username" id="inituser" placeholder="Usuario" class="input" required>
+                <br><br>
+                <input type="password" name="password" id="initpass" placeholder="Contraseña" class="input" required>
+                <br><br><br>
+                <button type="submit" id="button" class="enterbtn">Ingresar</button>
+                <br><br>
+                <div id="buttons">
+                    <button type="button" onclick="showStuff()" id="show_button" class="btn">Mostrar Contraseña</button>
+                </div>
+                <br>
+                <span id="status">
+                    <%= error %>
+                </span>
+                <br>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let initpass = document.getElementById("initpass");
+        let inituser = document.getElementById("inituser");
+        var show = true;
+        var show_button = document.getElementById("show_button");
+
+        function showStuff() {
+            if (show) {
+                initpass.type = "text";
+                show_button.innerHTML = "Ocultar Contraseña";
+                show = false;
+            } else {
+                initpass.type = "password";
+                show_button.innerHTML = "Mostrar Contraseña";
+                show = true;
+            }
+        }
+    </script>
+</body>
+
+</html>

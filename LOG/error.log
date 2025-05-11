@@ -1,0 +1,1372 @@
+2024-07-02 18:13:46: SyntaxError: Unexpected token ')'
+2024-07-02 18:13:46:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-02 18:13:46:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-02 18:13:46:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-02 18:13:46:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-02 18:14:49: SyntaxError: Unexpected token ')'
+2024-07-02 18:14:49:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-02 18:14:49:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-02 18:14:49:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-02 18:14:49:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-02 18:34:41: SyntaxError: Missing catch or finally after try
+2024-07-02 18:34:41:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-02 18:34:41:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-02 18:34:41:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-02 18:34:41:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-02 18:37:15: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/dashboard.ejs:60
+2024-07-02 18:37:15:     58|   </body>
+2024-07-02 18:37:15:     59| 
+2024-07-02 18:37:15:  >> 60|   <%- include('../modulos/crearModal.ejs');%>
+2024-07-02 18:37:15:     61| 
+2024-07-02 18:37:15:     62| 
+2024-07-02 18:37:15:     63| 
+2024-07-02 18:37:15: 
+2024-07-02 18:37:15: /todo/proyectos/duoc/Integracion/viewsejs/modulos/crearModal.ejs:51
+2024-07-02 18:37:15:     49|               <select class="form-select" id="tipoInput" name="Tipo" required>
+2024-07-02 18:37:15:     50|                 <option value="" disabled selected>Seleccione una opción</option>
+2024-07-02 18:37:15:  >> 51|                 <% results.forEach(function(result) { %>
+2024-07-02 18:37:15:     52|                     <option value="<%= result.ID %>"><%= result.Tipo %></option>
+2024-07-02 18:37:15:     53|                 <% }); %>
+2024-07-02 18:37:15:     54|             </select>
+2024-07-02 18:37:15: 
+2024-07-02 18:37:15: results is not defined
+2024-07-02 18:37:15:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/modulos/crearModal.ejs":12:8)
+2024-07-02 18:37:15:     at crearModal (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-02 18:37:15:     at include (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:701:39)
+2024-07-02 18:37:15:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/dashboard.ejs":15:17)
+2024-07-02 18:37:15:     at dashboard (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-02 18:37:15:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-02 18:37:15:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-02 18:37:15:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-02 18:37:15:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-02 18:37:15:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-02 18:53:56: ReferenceError: document is not defined
+2024-07-02 18:53:56:     at file:///todo/proyectos/duoc/Integracion/server.mjs:203:1
+2024-07-02 18:53:56:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-02 18:56:36: Error: Column 'ID_Tipo' cannot be null
+2024-07-02 18:56:36:     at PromisePool.query (/todo/proyectos/duoc/Integracion/node_modules/mysql2/promise.js:356:22)
+2024-07-02 18:56:36:     at file:///todo/proyectos/duoc/Integracion/server.mjs:240:24
+2024-07-02 18:56:36:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-02 18:56:36:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-02 18:56:36:     at done (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:45:7)
+2024-07-02 18:56:36:     at indicateDone (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:49:68)
+2024-07-02 18:56:36:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:166:7)
+2024-07-02 18:56:36:     at Multipart.emit (node:events:518:28)
+2024-07-02 18:56:36:     at emitCloseNT (node:internal/streams/destroy:147:10)
+2024-07-02 18:56:36:     at process.processTicksAndRejections (node:internal/process/task_queues:81:21) {
+2024-07-02 18:56:36:   code: 'ER_BAD_NULL_ERROR',
+2024-07-02 18:56:36:   errno: 1048,
+2024-07-02 18:56:36:   sql: '\n' +
+2024-07-02 18:56:36:     '      UPDATE productos\n' +
+2024-07-02 18:56:36:     '      SET \n' +
+2024-07-02 18:56:36:     "        Nombre = 'fdff', \n" +
+2024-07-02 18:56:36:     '        ID_Tipo = NULL, \n' +
+2024-07-02 18:56:36:     "        Precio = '2323', \n" +
+2024-07-02 18:56:36:     "        Cantidad = '3434', \n" +
+2024-07-02 18:56:36:     "        Peso = '334', \n" +
+2024-07-02 18:56:36:     "        Color = '3434', \n" +
+2024-07-02 18:56:36:     "        Garantia = '343', \n" +
+2024-07-02 18:56:36:     "        Modelo = '3434'\n" +
+2024-07-02 18:56:36:     "      WHERE ID = '10'",
+2024-07-02 18:56:36:   sqlState: '23000',
+2024-07-02 18:56:36:   sqlMessage: "Column 'ID_Tipo' cannot be null"
+2024-07-02 18:56:36: }
+2024-07-02 18:57:56: MulterError: Unexpected field
+2024-07-02 18:57:56:     at wrappedFileFilter (/todo/proyectos/duoc/Integracion/node_modules/multer/index.js:40:19)
+2024-07-02 18:57:56:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:107:7)
+2024-07-02 18:57:56:     at Multipart.emit (node:events:518:28)
+2024-07-02 18:57:56:     at HeaderParser.cb (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:358:14)
+2024-07-02 18:57:56:     at HeaderParser.push (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:162:20)
+2024-07-02 18:57:56:     at SBMH.ssCb [as _cb] (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:394:37)
+2024-07-02 18:57:56:     at feed (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:219:14)
+2024-07-02 18:57:56:     at SBMH.push (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:104:16)
+2024-07-02 18:57:56:     at Multipart._write (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:567:19)
+2024-07-02 18:57:56:     at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-02 18:58:27: MulterError: Unexpected field
+2024-07-02 18:58:27:     at wrappedFileFilter (/todo/proyectos/duoc/Integracion/node_modules/multer/index.js:40:19)
+2024-07-02 18:58:27:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:107:7)
+2024-07-02 18:58:27:     at Multipart.emit (node:events:518:28)
+2024-07-02 18:58:27:     at HeaderParser.cb (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:358:14)
+2024-07-02 18:58:27:     at HeaderParser.push (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:162:20)
+2024-07-02 18:58:27:     at SBMH.ssCb [as _cb] (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:394:37)
+2024-07-02 18:58:27:     at feed (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:248:10)
+2024-07-02 18:58:27:     at SBMH.push (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:104:16)
+2024-07-02 18:58:27:     at Multipart._write (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:567:19)
+2024-07-02 18:58:27:     at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-02 18:58:54: MulterError: Unexpected field
+2024-07-02 18:58:54:     at wrappedFileFilter (/todo/proyectos/duoc/Integracion/node_modules/multer/index.js:40:19)
+2024-07-02 18:58:54:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:107:7)
+2024-07-02 18:58:54:     at Multipart.emit (node:events:518:28)
+2024-07-02 18:58:54:     at HeaderParser.cb (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:358:14)
+2024-07-02 18:58:54:     at HeaderParser.push (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:162:20)
+2024-07-02 18:58:54:     at SBMH.ssCb [as _cb] (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:394:37)
+2024-07-02 18:58:54:     at feed (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:248:10)
+2024-07-02 18:58:54:     at SBMH.push (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:104:16)
+2024-07-02 18:58:54:     at Multipart._write (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:567:19)
+2024-07-02 18:58:54:     at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-02 18:59:09: MulterError: Unexpected field
+2024-07-02 18:59:09:     at wrappedFileFilter (/todo/proyectos/duoc/Integracion/node_modules/multer/index.js:40:19)
+2024-07-02 18:59:09:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:107:7)
+2024-07-02 18:59:09:     at Multipart.emit (node:events:518:28)
+2024-07-02 18:59:09:     at HeaderParser.cb (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:358:14)
+2024-07-02 18:59:09:     at HeaderParser.push (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:162:20)
+2024-07-02 18:59:09:     at SBMH.ssCb [as _cb] (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:394:37)
+2024-07-02 18:59:09:     at feed (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:248:10)
+2024-07-02 18:59:09:     at SBMH.push (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:104:16)
+2024-07-02 18:59:09:     at Multipart._write (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:567:19)
+2024-07-02 18:59:09:     at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-02 18:59:46: MulterError: Unexpected field
+2024-07-02 18:59:46:     at wrappedFileFilter (/todo/proyectos/duoc/Integracion/node_modules/multer/index.js:40:19)
+2024-07-02 18:59:46:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:107:7)
+2024-07-02 18:59:46:     at Multipart.emit (node:events:518:28)
+2024-07-02 18:59:46:     at HeaderParser.cb (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:358:14)
+2024-07-02 18:59:46:     at HeaderParser.push (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:162:20)
+2024-07-02 18:59:46:     at SBMH.ssCb [as _cb] (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:394:37)
+2024-07-02 18:59:46:     at feed (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:219:14)
+2024-07-02 18:59:46:     at SBMH.push (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:104:16)
+2024-07-02 18:59:46:     at Multipart._write (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:567:19)
+2024-07-02 18:59:46:     at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-02 19:00:06: MulterError: Unexpected field
+2024-07-02 19:00:06:     at wrappedFileFilter (/todo/proyectos/duoc/Integracion/node_modules/multer/index.js:40:19)
+2024-07-02 19:00:06:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:107:7)
+2024-07-02 19:00:06:     at Multipart.emit (node:events:518:28)
+2024-07-02 19:00:06:     at HeaderParser.cb (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:358:14)
+2024-07-02 19:00:06:     at HeaderParser.push (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:162:20)
+2024-07-02 19:00:06:     at SBMH.ssCb [as _cb] (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:394:37)
+2024-07-02 19:00:06:     at feed (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:219:14)
+2024-07-02 19:00:06:     at SBMH.push (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:104:16)
+2024-07-02 19:00:06:     at Multipart._write (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:567:19)
+2024-07-02 19:00:06:     at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-02 19:02:27: MulterError: Unexpected field
+2024-07-02 19:02:27:     at wrappedFileFilter (/todo/proyectos/duoc/Integracion/node_modules/multer/index.js:40:19)
+2024-07-02 19:02:27:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:107:7)
+2024-07-02 19:02:27:     at Multipart.emit (node:events:518:28)
+2024-07-02 19:02:27:     at HeaderParser.cb (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:358:14)
+2024-07-02 19:02:27:     at HeaderParser.push (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:162:20)
+2024-07-02 19:02:27:     at SBMH.ssCb [as _cb] (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:394:37)
+2024-07-02 19:02:27:     at feed (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:248:10)
+2024-07-02 19:02:27:     at SBMH.push (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:104:16)
+2024-07-02 19:02:27:     at Multipart._write (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:567:19)
+2024-07-02 19:02:27:     at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-02 19:04:39: MulterError: Unexpected field
+2024-07-02 19:04:39:     at wrappedFileFilter (/todo/proyectos/duoc/Integracion/node_modules/multer/index.js:40:19)
+2024-07-02 19:04:39:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:107:7)
+2024-07-02 19:04:39:     at Multipart.emit (node:events:518:28)
+2024-07-02 19:04:39:     at HeaderParser.cb (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:358:14)
+2024-07-02 19:04:39:     at HeaderParser.push (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:162:20)
+2024-07-02 19:04:39:     at SBMH.ssCb [as _cb] (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:394:37)
+2024-07-02 19:04:39:     at feed (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:248:10)
+2024-07-02 19:04:39:     at SBMH.push (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:104:16)
+2024-07-02 19:04:39:     at Multipart._write (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:567:19)
+2024-07-02 19:04:39:     at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-02 19:07:06: MulterError: Unexpected field
+2024-07-02 19:07:06:     at wrappedFileFilter (/todo/proyectos/duoc/Integracion/node_modules/multer/index.js:40:19)
+2024-07-02 19:07:06:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:107:7)
+2024-07-02 19:07:06:     at Multipart.emit (node:events:518:28)
+2024-07-02 19:07:06:     at HeaderParser.cb (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:358:14)
+2024-07-02 19:07:06:     at HeaderParser.push (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:162:20)
+2024-07-02 19:07:06:     at SBMH.ssCb [as _cb] (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:394:37)
+2024-07-02 19:07:06:     at feed (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:248:10)
+2024-07-02 19:07:06:     at SBMH.push (/todo/proyectos/duoc/Integracion/node_modules/streamsearch/lib/sbmh.js:104:16)
+2024-07-02 19:07:06:     at Multipart._write (/todo/proyectos/duoc/Integracion/node_modules/busboy/lib/types/multipart.js:567:19)
+2024-07-02 19:07:06:     at writeOrBuffer (node:internal/streams/writable:564:12)
+2024-07-02 19:18:36: Error al enviar el correo: Error: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+2024-07-02 19:18:36: 535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-708043b710fsm8885639b3a.156 - gsmtp
+2024-07-02 19:18:36:     at SMTPConnection._formatError (/todo/proyectos/duoc/Integracion/node_modules/nodemailer/lib/smtp-connection/index.js:798:19)
+2024-07-02 19:18:36:     at SMTPConnection._actionAUTHComplete (/todo/proyectos/duoc/Integracion/node_modules/nodemailer/lib/smtp-connection/index.js:1577:34)
+2024-07-02 19:18:36:     at SMTPConnection.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/nodemailer/lib/smtp-connection/index.js:554:26)
+2024-07-02 19:18:36:     at SMTPConnection._processResponse (/todo/proyectos/duoc/Integracion/node_modules/nodemailer/lib/smtp-connection/index.js:982:20)
+2024-07-02 19:18:36:     at SMTPConnection._onData (/todo/proyectos/duoc/Integracion/node_modules/nodemailer/lib/smtp-connection/index.js:763:14)
+2024-07-02 19:18:36:     at SMTPConnection._onSocketData (/todo/proyectos/duoc/Integracion/node_modules/nodemailer/lib/smtp-connection/index.js:195:44)
+2024-07-02 19:18:36:     at TLSSocket.emit (node:events:518:28)
+2024-07-02 19:18:36:     at addChunk (node:internal/streams/readable:559:12)
+2024-07-02 19:18:36:     at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+2024-07-02 19:18:36:     at Readable.push (node:internal/streams/readable:390:5) {
+2024-07-02 19:18:36:   code: 'EAUTH',
+2024-07-02 19:18:36:   response: '535-5.7.8 Username and Password not accepted. For more information, go to\n' +
+2024-07-02 19:18:36:     '535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-708043b710fsm8885639b3a.156 - gsmtp',
+2024-07-02 19:18:36:   responseCode: 535,
+2024-07-02 19:18:36:   command: 'AUTH PLAIN'
+2024-07-02 19:18:36: }
+2024-07-02 19:25:55: Error al enviar el correo: ReferenceError: alert is not defined
+2024-07-02 19:25:55:     at file:///todo/proyectos/duoc/Integracion/server.mjs:193:5
+2024-07-02 19:25:55:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-02 19:26:16: Error al enviar el correo: ReferenceError: alert is not defined
+2024-07-02 19:26:16:     at file:///todo/proyectos/duoc/Integracion/server.mjs:193:5
+2024-07-02 19:26:16:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-03 01:26:53: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 01:26:53:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 01:26:53:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 01:26:53:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 01:26:53:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 01:26:53:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 01:26:53:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 01:26:53:     at new Promise (<anonymous>)
+2024-07-03 01:26:53:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 01:26:53:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 01:26:53:     at file:///todo/proyectos/duoc/Integracion/server.mjs:377:65
+2024-07-03 01:34:23: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 01:34:23:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 01:34:23:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 01:34:23:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 01:34:23:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 01:34:23:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 01:34:23:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 01:34:23:     at new Promise (<anonymous>)
+2024-07-03 01:34:23:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 01:34:23:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 01:34:23:     at file:///todo/proyectos/duoc/Integracion/server.mjs:377:65
+2024-07-03 03:35:15: Error al crear la transacción: Error [TransbankError]: AxiosError: Request failed with status code 422
+2024-07-03 03:35:15: amount is required!
+2024-07-03 03:35:15: 
+2024-07-03 03:35:15:     at new TransbankError (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/transbank_error.js:21:28)
+2024-07-03 03:35:15:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/request_service.js:87:27
+2024-07-03 03:35:15:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-03 03:35:15:     at async file:///todo/proyectos/duoc/Integracion/server.mjs:357:28
+2024-07-03 03:35:34: Error al crear la transacción: Error [TransbankError]: AxiosError: Request failed with status code 422
+2024-07-03 03:35:34: amount is required!
+2024-07-03 03:35:34: 
+2024-07-03 03:35:34:     at new TransbankError (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/transbank_error.js:21:28)
+2024-07-03 03:35:34:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/request_service.js:87:27
+2024-07-03 03:35:34:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-03 03:35:34:     at async file:///todo/proyectos/duoc/Integracion/server.mjs:357:28
+2024-07-03 03:44:51: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/orden.ejs:36
+2024-07-03 03:44:51:     34|                   
+2024-07-03 03:44:51:     35|                 </div>
+2024-07-03 03:44:51:  >> 36|                 <form action="<%= url %>" method="POST">
+2024-07-03 03:44:51:     37|                 <div class="itemDetails">
+2024-07-03 03:44:51:     38|                   <h3>Entrega Estimada <span id="fechaEntrega"></span></h3>
+2024-07-03 03:44:51:     39|                   <p id="ordenGenerada">ORDEN # </p>
+2024-07-03 03:44:51: 
+2024-07-03 03:44:51: url is not defined
+2024-07-03 03:44:51:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/orden.ejs":18:26)
+2024-07-03 03:44:51:     at orden (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-03 03:44:51:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-03 03:44:51:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-03 03:44:51:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-03 03:44:51:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-03 03:44:51:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-03 03:44:51:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-03 03:44:51:     at file:///todo/proyectos/duoc/Integracion/server.mjs:347:7
+2024-07-03 03:44:51:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-03 03:45:56: ReferenceError: url is not defined
+2024-07-03 03:45:56:     at file:///todo/proyectos/duoc/Integracion/server.mjs:347:35
+2024-07-03 03:45:56:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-03 03:45:56:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-03 03:45:56:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-03 03:45:56:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-03 03:45:56:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-03 03:45:56:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-03 03:45:56:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-03 03:45:56:     at urlencodedParser (/todo/proyectos/duoc/Integracion/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+2024-07-03 03:45:56:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-03 03:56:42: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 03:56:42:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 03:56:42:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 03:56:42:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 03:56:42:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 03:56:42:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 03:56:42:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 03:56:42:     at new Promise (<anonymous>)
+2024-07-03 03:56:42:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 03:56:42:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 03:56:42:     at file:///todo/proyectos/duoc/Integracion/server.mjs:375:65
+2024-07-03 03:58:04: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 03:58:04:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 03:58:04:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 03:58:04:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 03:58:04:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 03:58:04:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 03:58:04:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 03:58:04:     at new Promise (<anonymous>)
+2024-07-03 03:58:04:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 03:58:04:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 03:58:04:     at file:///todo/proyectos/duoc/Integracion/server.mjs:375:65
+2024-07-03 03:58:06: Error al crear la transacción: Error: 'buyOrder' can't be null or white space
+2024-07-03 03:58:06:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 03:58:06:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 03:58:06:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:91:43)
+2024-07-03 03:58:06:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 03:58:06:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 03:58:06:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 03:58:06:     at new Promise (<anonymous>)
+2024-07-03 03:58:06:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 03:58:06:     at Transaction.create (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:88:16)
+2024-07-03 03:58:06:     at file:///todo/proyectos/duoc/Integracion/server.mjs:354:65
+2024-07-03 03:58:16: Error al crear la transacción: Error: 'buyOrder' can't be null or white space
+2024-07-03 03:58:16:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 03:58:16:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 03:58:16:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:91:43)
+2024-07-03 03:58:16:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 03:58:16:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 03:58:16:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 03:58:16:     at new Promise (<anonymous>)
+2024-07-03 03:58:16:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 03:58:16:     at Transaction.create (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:88:16)
+2024-07-03 03:58:16:     at file:///todo/proyectos/duoc/Integracion/server.mjs:354:65
+2024-07-03 03:59:26: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/orden.ejs:36
+2024-07-03 03:59:26:     34|                   
+2024-07-03 03:59:26:     35|                 </div>
+2024-07-03 03:59:26:  >> 36|                 <!-- <form action="<%= url %>" method="POST"> -->
+2024-07-03 03:59:26:     37|                 <div class="itemDetails">
+2024-07-03 03:59:26:     38|                   <h3>Entrega Estimada <span id="fechaEntrega"></span></h3>
+2024-07-03 03:59:26:     39|                   <p id="ordenGenerada">ORDEN # </p>
+2024-07-03 03:59:26: 
+2024-07-03 03:59:26: url is not defined
+2024-07-03 03:59:26:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/orden.ejs":18:26)
+2024-07-03 03:59:26:     at orden (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-03 03:59:26:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-03 03:59:26:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-03 03:59:26:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-03 03:59:26:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-03 03:59:26:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-03 03:59:26:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-03 03:59:26:     at file:///todo/proyectos/duoc/Integracion/server.mjs:348:7
+2024-07-03 03:59:26:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-03 03:59:47: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/orden.ejs:36
+2024-07-03 03:59:47:     34|                   
+2024-07-03 03:59:47:     35|                 </div>
+2024-07-03 03:59:47:  >> 36|                 <!-- <form action="<%= url %>" method="POST"> -->
+2024-07-03 03:59:47:     37|                 <div class="itemDetails">
+2024-07-03 03:59:47:     38|                   <h3>Entrega Estimada <span id="fechaEntrega"></span></h3>
+2024-07-03 03:59:47:     39|                   <p id="ordenGenerada">ORDEN # </p>
+2024-07-03 03:59:47: 
+2024-07-03 03:59:47: url is not defined
+2024-07-03 03:59:47:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/orden.ejs":18:26)
+2024-07-03 03:59:47:     at orden (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-03 03:59:47:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-03 03:59:47:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-03 03:59:47:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-03 03:59:47:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-03 03:59:47:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-03 03:59:47:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-03 03:59:47:     at file:///todo/proyectos/duoc/Integracion/server.mjs:348:7
+2024-07-03 03:59:47:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-03 03:59:57: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/orden.ejs:36
+2024-07-03 03:59:57:     34|                   
+2024-07-03 03:59:57:     35|                 </div>
+2024-07-03 03:59:57:  >> 36|                 <!-- <form action="<%= url %>" method="POST"> -->
+2024-07-03 03:59:57:     37|                 <div class="itemDetails">
+2024-07-03 03:59:57:     38|                   <h3>Entrega Estimada <span id="fechaEntrega"></span></h3>
+2024-07-03 03:59:57:     39|                   <p id="ordenGenerada">ORDEN # </p>
+2024-07-03 03:59:57: 
+2024-07-03 03:59:57: url is not defined
+2024-07-03 03:59:57:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/orden.ejs":18:26)
+2024-07-03 03:59:57:     at orden (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-03 03:59:57:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-03 03:59:57:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-03 03:59:57:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-03 03:59:57:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-03 03:59:57:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-03 03:59:57:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-03 03:59:57:     at file:///todo/proyectos/duoc/Integracion/server.mjs:348:7
+2024-07-03 03:59:57:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-03 04:11:36: Error al crear la transacción: Error [TransbankError]: AxiosError: timeout of 60000ms exceeded
+2024-07-03 04:11:36: Unexpected error
+2024-07-03 04:11:36: 
+2024-07-03 04:11:36:     at new TransbankError (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/transbank_error.js:21:28)
+2024-07-03 04:11:36:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/request_service.js:87:27
+2024-07-03 04:11:36:     at async file:///todo/proyectos/duoc/Integracion/server.mjs:356:28
+2024-07-03 04:19:12: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:19:12:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:19:12:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:19:12:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:19:12:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:19:12:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:19:12:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:19:12:     at new Promise (<anonymous>)
+2024-07-03 04:19:12:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:19:12:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:19:12:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:20:11: ReferenceError: commitResponse is not defined
+2024-07-03 04:20:11:     at file:///todo/proyectos/duoc/Integracion/server.mjs:386:39
+2024-07-03 04:20:25: ReferenceError: commitResponse is not defined
+2024-07-03 04:20:25:     at file:///todo/proyectos/duoc/Integracion/server.mjs:386:39
+2024-07-03 04:34:13: ReferenceError: commitResponse is not defined
+2024-07-03 04:34:13:     at file:///todo/proyectos/duoc/Integracion/server.mjs:386:39
+2024-07-03 04:35:01: ReferenceError: commitResponse is not defined
+2024-07-03 04:35:01:     at file:///todo/proyectos/duoc/Integracion/server.mjs:388:48
+2024-07-03 04:35:57: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:35:57:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:35:57:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:35:57:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:35:57:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:35:57:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:35:57:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:35:57:     at new Promise (<anonymous>)
+2024-07-03 04:35:57:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:35:57:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:35:57:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:35:57: Error: Failed to lookup view "views/error.ejs" in views directory "./viewsejs"
+2024-07-03 04:35:57:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:597:17)
+2024-07-03 04:35:57:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-03 04:35:57:     at file:///todo/proyectos/duoc/Integracion/server.mjs:389:21
+2024-07-03 04:36:27: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:36:27:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:36:27:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:36:27:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:36:27:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:36:27:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:36:27:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:36:27:     at new Promise (<anonymous>)
+2024-07-03 04:36:27:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:36:27:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:36:27:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:36:27: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/return.ejs:11
+2024-07-03 04:36:27:     9|   <h1>Resultado del Pago</h1>
+2024-07-03 04:36:27:     10|   <pre>
+2024-07-03 04:36:27:  >> 11|     <%= JSON.stringify(commitResponse, null, 2) %>
+2024-07-03 04:36:27:     12|   </pre>
+2024-07-03 04:36:27:     13| 
+2024-07-03 04:36:27:     14| </div>
+2024-07-03 04:36:27: 
+2024-07-03 04:36:27: commitResponse is not defined
+2024-07-03 04:36:27:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/return.ejs":18:41)
+2024-07-03 04:36:27:     at return (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-03 04:36:27:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-03 04:36:27:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-03 04:36:27:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-03 04:36:27:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-03 04:36:27:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-03 04:36:27:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-03 04:36:27:     at file:///todo/proyectos/duoc/Integracion/server.mjs:389:21
+2024-07-03 04:36:49: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:36:49:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:36:49:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:36:49:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:36:49:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:36:49:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:36:49:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:36:49:     at new Promise (<anonymous>)
+2024-07-03 04:36:49:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:36:49:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:36:49:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:37:32: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:37:32:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:37:32:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:37:32:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:37:32:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:37:32:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:37:32:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:37:32:     at new Promise (<anonymous>)
+2024-07-03 04:37:32:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:37:32:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:37:32:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:42:09: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:42:09:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:42:09:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:42:09:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:42:09:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:42:09:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:42:09:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:42:09:     at new Promise (<anonymous>)
+2024-07-03 04:42:09:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:42:09:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:42:09:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:43:05: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:43:05:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:43:05:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:43:05:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:43:05:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:43:05:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:43:05:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:43:05:     at new Promise (<anonymous>)
+2024-07-03 04:43:05:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:43:05:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:43:05:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:48:08: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:48:08:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:48:08:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:48:08:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:48:08:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:48:08:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:48:08:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:48:08:     at new Promise (<anonymous>)
+2024-07-03 04:48:08:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:48:08:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:48:08:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:48:28: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:48:28:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:48:28:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:48:28:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:48:28:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:48:28:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:48:28:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:48:28:     at new Promise (<anonymous>)
+2024-07-03 04:48:28:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:48:28:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:48:28:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:50:08: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:50:08:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:50:08:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:50:08:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:50:08:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:50:08:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:50:08:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:50:08:     at new Promise (<anonymous>)
+2024-07-03 04:50:08:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:50:08:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:50:08:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:50:17: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:50:17:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:50:17:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:50:17:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:50:17:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:50:17:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:50:17:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:50:17:     at new Promise (<anonymous>)
+2024-07-03 04:50:17:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:50:17:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:50:17:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:50:40: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:50:40:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:50:40:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:50:40:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:50:40:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:50:40:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:50:40:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:50:40:     at new Promise (<anonymous>)
+2024-07-03 04:50:40:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:50:40:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:50:40:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:51:24: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:51:24:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:51:24:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:51:24:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:51:24:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:51:24:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:51:24:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:51:24:     at new Promise (<anonymous>)
+2024-07-03 04:51:24:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:51:24:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:51:24:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:52:30: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:52:30:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:52:30:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:52:30:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:52:30:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:52:30:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:52:30:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:52:30:     at new Promise (<anonymous>)
+2024-07-03 04:52:30:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:52:30:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:52:30:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:53:38: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:53:38:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:53:38:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:53:38:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:53:38:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:53:38:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:53:38:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:53:38:     at new Promise (<anonymous>)
+2024-07-03 04:53:38:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:53:38:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:53:38:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 04:54:14: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 04:54:14:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 04:54:14:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 04:54:14:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 04:54:14:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 04:54:14:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 04:54:14:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 04:54:14:     at new Promise (<anonymous>)
+2024-07-03 04:54:14:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 04:54:14:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 04:54:14:     at file:///todo/proyectos/duoc/Integracion/server.mjs:383:65
+2024-07-03 07:02:36: Error: Failed to lookup view "seguimiento.ejs" in views directory "./viewsejs"
+2024-07-03 07:02:36:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:597:17)
+2024-07-03 07:02:36:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-03 07:02:36:     at file:///todo/proyectos/duoc/Integracion/server.mjs:282:9
+2024-07-03 07:02:36:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-03 07:32:35: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/bodeguero.ejs:60
+2024-07-03 07:32:35:     58|   </body>
+2024-07-03 07:32:35:     59| 
+2024-07-03 07:32:35:  >> 60|   <%- include('../modulos/crearModal.ejs');%>
+2024-07-03 07:32:35:     61| 
+2024-07-03 07:32:35:     62| 
+2024-07-03 07:32:35:     63| 
+2024-07-03 07:32:35: 
+2024-07-03 07:32:35: /todo/proyectos/duoc/Integracion/viewsejs/modulos/crearModal.ejs:51
+2024-07-03 07:32:35:     49|               <select class="form-select" id="tipoInput" name="tipoInput" required>
+2024-07-03 07:32:35:     50|                 <option value="" disabled selected>Seleccione una opción</option>
+2024-07-03 07:32:35:  >> 51|                 <% tipos.forEach(function(result) { %>
+2024-07-03 07:32:35:     52|                     <option value="<%= result.ID %>"><%= result.Tipo %></option>
+2024-07-03 07:32:35:     53|                 <% }); %>
+2024-07-03 07:32:35:     54|             </select>
+2024-07-03 07:32:35: 
+2024-07-03 07:32:35: tipos is not defined
+2024-07-03 07:32:35:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/modulos/crearModal.ejs":12:8)
+2024-07-03 07:32:35:     at crearModal (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-03 07:32:35:     at include (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:701:39)
+2024-07-03 07:32:35:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/bodeguero.ejs":15:17)
+2024-07-03 07:32:35:     at bodeguero (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-03 07:32:35:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-03 07:32:35:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-03 07:32:35:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-03 07:32:35:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-03 07:32:35:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-03 08:21:01: Error al confirmar la transacción: Error: 'token' can't be null or white space
+2024-07-03 08:21:01:     at ValidationUtil.hasText (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:8:19)
+2024-07-03 08:21:01:     at ValidationUtil.hasTextWithMaxLength (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/common/validation_util.js:11:24)
+2024-07-03 08:21:01:     at Transaction.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:106:43)
+2024-07-03 08:21:01:     at step (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:48:23)
+2024-07-03 08:21:01:     at Object.next (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:29:53)
+2024-07-03 08:21:01:     at /todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:23:71
+2024-07-03 08:21:01:     at new Promise (<anonymous>)
+2024-07-03 08:21:01:     at __awaiter (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:19:12)
+2024-07-03 08:21:01:     at Transaction.commit (/todo/proyectos/duoc/Integracion/node_modules/transbank-sdk/dist/es5/transbank/webpay/webpay_plus/transaction.js:104:16)
+2024-07-03 08:21:01:     at file:///todo/proyectos/duoc/Integracion/server.mjs:485:65
+2024-07-17 15:18:49: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/todo/proyectos/duoc/Integracion/routes/auth.mjs' imported from /todo/proyectos/duoc/Integracion/server.mjs
+2024-07-17 15:18:49:     at finalizeResolution (node:internal/modules/esm/resolve:264:11)
+2024-07-17 15:18:49:     at moduleResolve (node:internal/modules/esm/resolve:917:10)
+2024-07-17 15:18:49:     at defaultResolve (node:internal/modules/esm/resolve:1130:11)
+2024-07-17 15:18:49:     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:396:12)
+2024-07-17 15:18:49:     at ModuleLoader.resolve (node:internal/modules/esm/loader:365:25)
+2024-07-17 15:18:49:     at ModuleLoader.getModuleJob (node:internal/modules/esm/loader:240:38)
+2024-07-17 15:18:49:     at ModuleWrap.<anonymous> (node:internal/modules/esm/module_job:85:39)
+2024-07-17 15:18:49:     at link (node:internal/modules/esm/module_job:84:36) {
+2024-07-17 15:18:49:   code: 'ERR_MODULE_NOT_FOUND',
+2024-07-17 15:18:49:   url: 'file:///todo/proyectos/duoc/Integracion/routes/auth.mjs'
+2024-07-17 15:18:49: }
+2024-07-17 15:18:57: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/todo/proyectos/duoc/Integracion/routes/auth.mjs' imported from /todo/proyectos/duoc/Integracion/server.mjs
+2024-07-17 15:18:57:     at finalizeResolution (node:internal/modules/esm/resolve:264:11)
+2024-07-17 15:18:57:     at moduleResolve (node:internal/modules/esm/resolve:917:10)
+2024-07-17 15:18:57:     at defaultResolve (node:internal/modules/esm/resolve:1130:11)
+2024-07-17 15:18:57:     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:396:12)
+2024-07-17 15:18:57:     at ModuleLoader.resolve (node:internal/modules/esm/loader:365:25)
+2024-07-17 15:18:57:     at ModuleLoader.getModuleJob (node:internal/modules/esm/loader:240:38)
+2024-07-17 15:18:57:     at ModuleWrap.<anonymous> (node:internal/modules/esm/module_job:85:39)
+2024-07-17 15:18:57:     at link (node:internal/modules/esm/module_job:84:36) {
+2024-07-17 15:18:57:   code: 'ERR_MODULE_NOT_FOUND',
+2024-07-17 15:18:57:   url: 'file:///todo/proyectos/duoc/Integracion/routes/auth.mjs'
+2024-07-17 15:18:57: }
+2024-07-17 15:23:12: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/todo/proyectos/duoc/Integracion/routes/auth.mjs' imported from /todo/proyectos/duoc/Integracion/server.mjs
+2024-07-17 15:23:12:     at finalizeResolution (node:internal/modules/esm/resolve:264:11)
+2024-07-17 15:23:12:     at moduleResolve (node:internal/modules/esm/resolve:917:10)
+2024-07-17 15:23:12:     at defaultResolve (node:internal/modules/esm/resolve:1130:11)
+2024-07-17 15:23:12:     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:396:12)
+2024-07-17 15:23:12:     at ModuleLoader.resolve (node:internal/modules/esm/loader:365:25)
+2024-07-17 15:23:12:     at ModuleLoader.getModuleJob (node:internal/modules/esm/loader:240:38)
+2024-07-17 15:23:12:     at ModuleWrap.<anonymous> (node:internal/modules/esm/module_job:85:39)
+2024-07-17 15:23:12:     at link (node:internal/modules/esm/module_job:84:36) {
+2024-07-17 15:23:12:   code: 'ERR_MODULE_NOT_FOUND',
+2024-07-17 15:23:12:   url: 'file:///todo/proyectos/duoc/Integracion/routes/auth.mjs'
+2024-07-17 15:23:12: }
+2024-07-17 15:27:59: SyntaxError: Identifier 'authRoutes' has already been declared
+2024-07-17 15:27:59:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-17 15:27:59:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-17 15:27:59:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-17 15:27:59:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-17 15:28:24: SyntaxError: Identifier 'authRoutes' has already been declared
+2024-07-17 15:28:24:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-17 15:28:24:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-17 15:28:24:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-17 15:28:24:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-17 15:28:54: SyntaxError: Identifier 'authRoutes' has already been declared
+2024-07-17 15:28:54:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-17 15:28:54:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-17 15:28:54:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-17 15:28:54:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-17 15:29:03: SyntaxError: Identifier 'authRoutes' has already been declared
+2024-07-17 15:29:03:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-17 15:29:03:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-17 15:29:03:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-17 15:29:03:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-17 15:29:23: SyntaxError: Identifier 'authRoutes' has already been declared
+2024-07-17 15:29:23:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-17 15:29:23:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-17 15:29:23:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-17 15:29:23:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-17 15:29:42: SyntaxError: Identifier 'authRoutes' has already been declared
+2024-07-17 15:29:42:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-17 15:29:42:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-17 15:29:42:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-17 15:29:42:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-17 15:30:00: SyntaxError: Identifier 'authRoutes' has already been declared
+2024-07-17 15:30:00:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-17 15:30:00:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-17 15:30:00:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-17 15:30:00:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-17 15:32:55: ReferenceError: path is not defined
+2024-07-17 15:32:55:     at file:///todo/proyectos/duoc/Integracion/server.mjs:127:18
+2024-07-17 15:32:55:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-17 15:35:13: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/todo/proyectos/duoc/Integracion/routes/auth.mjs' imported from /todo/proyectos/duoc/Integracion/server.mjs
+2024-07-17 15:35:13:     at finalizeResolution (node:internal/modules/esm/resolve:264:11)
+2024-07-17 15:35:13:     at moduleResolve (node:internal/modules/esm/resolve:917:10)
+2024-07-17 15:35:13:     at defaultResolve (node:internal/modules/esm/resolve:1130:11)
+2024-07-17 15:35:13:     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:396:12)
+2024-07-17 15:35:13:     at ModuleLoader.resolve (node:internal/modules/esm/loader:365:25)
+2024-07-17 15:35:13:     at ModuleLoader.getModuleJob (node:internal/modules/esm/loader:240:38)
+2024-07-17 15:35:13:     at ModuleWrap.<anonymous> (node:internal/modules/esm/module_job:85:39)
+2024-07-17 15:35:13:     at link (node:internal/modules/esm/module_job:84:36) {
+2024-07-17 15:35:13:   code: 'ERR_MODULE_NOT_FOUND',
+2024-07-17 15:35:13:   url: 'file:///todo/proyectos/duoc/Integracion/routes/auth.mjs'
+2024-07-17 15:35:13: }
+2024-07-17 15:35:32: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/todo/proyectos/duoc/Integracion/routes/auth.mjs' imported from /todo/proyectos/duoc/Integracion/server.mjs
+2024-07-17 15:35:32:     at finalizeResolution (node:internal/modules/esm/resolve:264:11)
+2024-07-17 15:35:32:     at moduleResolve (node:internal/modules/esm/resolve:917:10)
+2024-07-17 15:35:32:     at defaultResolve (node:internal/modules/esm/resolve:1130:11)
+2024-07-17 15:35:32:     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:396:12)
+2024-07-17 15:35:32:     at ModuleLoader.resolve (node:internal/modules/esm/loader:365:25)
+2024-07-17 15:35:32:     at ModuleLoader.getModuleJob (node:internal/modules/esm/loader:240:38)
+2024-07-17 15:35:32:     at ModuleWrap.<anonymous> (node:internal/modules/esm/module_job:85:39)
+2024-07-17 15:35:32:     at link (node:internal/modules/esm/module_job:84:36) {
+2024-07-17 15:35:32:   code: 'ERR_MODULE_NOT_FOUND',
+2024-07-17 15:35:32:   url: 'file:///todo/proyectos/duoc/Integracion/routes/auth.mjs'
+2024-07-17 15:35:32: }
+2024-07-17 15:40:28: TypeError: Cannot read properties of undefined (reading 'userId')
+2024-07-17 15:40:28:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:129:19)
+2024-07-17 15:40:28:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 15:40:28:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 15:40:28:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 15:40:28:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 15:40:28:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 15:40:28:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 15:40:28:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 15:40:28:     at file:///todo/proyectos/duoc/Integracion/server.mjs:200:3
+2024-07-17 15:40:28:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 15:46:06: TypeError: Cannot read properties of undefined (reading 'userId')
+2024-07-17 15:46:06:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:129:19)
+2024-07-17 15:46:06:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 15:46:06:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 15:46:06:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 15:46:06:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 15:46:06:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 15:46:06:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 15:46:06:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 15:46:06:     at file:///todo/proyectos/duoc/Integracion/server.mjs:200:3
+2024-07-17 15:46:06:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:01:33: ReferenceError: authenticate is not defined
+2024-07-17 16:01:33:     at file:///todo/proyectos/duoc/Integracion/server.mjs:199:53
+2024-07-17 16:01:33:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-17 16:01:45: ReferenceError: authenticate is not defined
+2024-07-17 16:01:45:     at file:///todo/proyectos/duoc/Integracion/server.mjs:199:53
+2024-07-17 16:01:45:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-17 16:02:02: ReferenceError: authenticate is not defined
+2024-07-17 16:02:02:     at file:///todo/proyectos/duoc/Integracion/server.mjs:199:53
+2024-07-17 16:02:02:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-17 16:07:39: TypeError: Cannot read properties of undefined (reading 'userId')
+2024-07-17 16:07:39:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:129:19)
+2024-07-17 16:07:39:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:07:39:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:07:39:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:07:39:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:07:39:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:07:39:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:07:39:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:07:39:     at file:///todo/proyectos/duoc/Integracion/server.mjs:204:3
+2024-07-17 16:07:39:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:07:56: TypeError: Cannot read properties of undefined (reading 'userId')
+2024-07-17 16:07:56:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:129:19)
+2024-07-17 16:07:56:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:07:56:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:07:56:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:07:56:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:07:56:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:07:56:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:07:56:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:07:56:     at file:///todo/proyectos/duoc/Integracion/server.mjs:204:3
+2024-07-17 16:07:56:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:05: TypeError: Cannot read properties of undefined (reading 'userId')
+2024-07-17 16:09:05:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:129:19)
+2024-07-17 16:09:05:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:05:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:09:05:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:09:05:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:05:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:09:05:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:09:05:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:09:05:     at file:///todo/proyectos/duoc/Integracion/server.mjs:204:3
+2024-07-17 16:09:05:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:07: TypeError: Cannot read properties of undefined (reading 'userId')
+2024-07-17 16:09:07:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:129:19)
+2024-07-17 16:09:07:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:07:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:09:07:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:09:07:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:07:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:09:07:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:09:07:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:09:07:     at file:///todo/proyectos/duoc/Integracion/server.mjs:204:3
+2024-07-17 16:09:07:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:09: TypeError: Cannot read properties of undefined (reading 'userId')
+2024-07-17 16:09:09:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:129:19)
+2024-07-17 16:09:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:09:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:09:09:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:09:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:09:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:09:09:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:09:09:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:09:09:     at file:///todo/proyectos/duoc/Integracion/server.mjs:204:3
+2024-07-17 16:09:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:09: TypeError: Cannot read properties of undefined (reading 'userId')
+2024-07-17 16:09:09:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:129:19)
+2024-07-17 16:09:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:09:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:09:09:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:09:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:09:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:09:09:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:09:09:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:09:09:     at file:///todo/proyectos/duoc/Integracion/server.mjs:204:3
+2024-07-17 16:09:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:09: TypeError: Cannot read properties of undefined (reading 'userId')
+2024-07-17 16:09:09:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:129:19)
+2024-07-17 16:09:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:09:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:09:09:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:09:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:09:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:09:09:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:09:09:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:09:09:     at file:///todo/proyectos/duoc/Integracion/server.mjs:204:3
+2024-07-17 16:09:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:41: ReferenceError: confirmado is not defined
+2024-07-17 16:09:41:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:129:3)
+2024-07-17 16:09:41:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:41:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:09:41:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:09:41:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:09:41:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:09:41:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:09:41:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:09:41:     at file:///todo/proyectos/duoc/Integracion/server.mjs:204:3
+2024-07-17 16:09:41:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:10:07: ReferenceError: confirmado is not defined
+2024-07-17 16:10:07:     at authenticate (file:///todo/proyectos/duoc/Integracion/server.mjs:179:3)
+2024-07-17 16:10:07:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:10:07:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:10:07:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:10:07:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:10:07:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:10:07:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:10:07:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:10:07:     at file:///todo/proyectos/duoc/Integracion/server.mjs:209:3
+2024-07-17 16:10:07:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:10:27: Error: Failed to lookup view "dashboard.ejs" in views directory "./viewsejs"
+2024-07-17 16:10:27:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:597:17)
+2024-07-17 16:10:27:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:10:27:     at file:///todo/proyectos/duoc/Integracion/server.mjs:235:9
+2024-07-17 16:10:27:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-17 16:10:36: Error: Failed to lookup view "dashboard.ejs" in views directory "./viewsejs"
+2024-07-17 16:10:36:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:597:17)
+2024-07-17 16:10:36:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:10:36:     at file:///todo/proyectos/duoc/Integracion/server.mjs:235:9
+2024-07-17 16:10:36:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-17 16:17:54: SyntaxError: Unexpected token '}'
+2024-07-17 16:17:54:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-17 16:17:54:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-17 16:17:54:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-17 16:17:54:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-17 16:19:02: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs:30
+2024-07-17 16:19:02:     28|                 </div>
+2024-07-17 16:19:02:     29|                 <br>
+2024-07-17 16:19:02:  >> 30|                 <span id="status"><%= error ? error : '' %></span>
+2024-07-17 16:19:02:     31|                 <br>
+2024-07-17 16:19:02:     32|             </form>
+2024-07-17 16:19:02:     33|         </div>
+2024-07-17 16:19:02: 
+2024-07-17 16:19:02: error is not defined
+2024-07-17 16:19:02:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs":12:26)
+2024-07-17 16:19:02:     at login (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 16:19:02:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 16:19:02:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 16:19:02:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 16:19:02:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 16:19:02:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 16:19:02:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:19:02:     at file:///todo/proyectos/duoc/Integracion/server.mjs:157:7
+2024-07-17 16:19:02:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:20:58: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs:30
+2024-07-17 16:20:58:     28|                 </div>
+2024-07-17 16:20:58:     29|                 <br>
+2024-07-17 16:20:58:  >> 30|                 <span id="status"><%= error ? error : '' %></span>
+2024-07-17 16:20:58:     31|                 <br>
+2024-07-17 16:20:58:     32|             </form>
+2024-07-17 16:20:58:     33|         </div>
+2024-07-17 16:20:58: 
+2024-07-17 16:20:58: error is not defined
+2024-07-17 16:20:58:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs":12:26)
+2024-07-17 16:20:58:     at login (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 16:20:58:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 16:20:58:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 16:20:58:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 16:20:58:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 16:20:58:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 16:20:58:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:20:58:     at file:///todo/proyectos/duoc/Integracion/server.mjs:157:7
+2024-07-17 16:20:58:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:33: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs:34
+2024-07-17 16:21:33:     32|                     <script>
+2024-07-17 16:21:33:     33|                         // Mostrar mensaje de error si está presente
+2024-07-17 16:21:33:  >> 34|                         var errorMessage = "<%= error %>";
+2024-07-17 16:21:33:     35|                         if (errorMessage) {
+2024-07-17 16:21:33:     36|                             document.getElementById("status").innerHTML = errorMessage;
+2024-07-17 16:21:33:     37|                         }
+2024-07-17 16:21:33: 
+2024-07-17 16:21:33: error is not defined
+2024-07-17 16:21:33:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs":12:26)
+2024-07-17 16:21:33:     at login (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 16:21:33:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 16:21:33:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 16:21:33:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 16:21:33:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 16:21:33:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 16:21:33:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:21:33:     at file:///todo/proyectos/duoc/Integracion/server.mjs:157:7
+2024-07-17 16:21:33:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:36: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs:34
+2024-07-17 16:21:36:     32|                     <script>
+2024-07-17 16:21:36:     33|                         // Mostrar mensaje de error si está presente
+2024-07-17 16:21:36:  >> 34|                         var errorMessage = "<%= error %>";
+2024-07-17 16:21:36:     35|                         if (errorMessage) {
+2024-07-17 16:21:36:     36|                             document.getElementById("status").innerHTML = errorMessage;
+2024-07-17 16:21:36:     37|                         }
+2024-07-17 16:21:36: 
+2024-07-17 16:21:36: error is not defined
+2024-07-17 16:21:36:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs":12:26)
+2024-07-17 16:21:36:     at login (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 16:21:36:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 16:21:36:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 16:21:36:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 16:21:36:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 16:21:36:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 16:21:36:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:21:36:     at file:///todo/proyectos/duoc/Integracion/server.mjs:157:7
+2024-07-17 16:21:36:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:37: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs:34
+2024-07-17 16:21:37:     32|                     <script>
+2024-07-17 16:21:37:     33|                         // Mostrar mensaje de error si está presente
+2024-07-17 16:21:37:  >> 34|                         var errorMessage = "<%= error %>";
+2024-07-17 16:21:37:     35|                         if (errorMessage) {
+2024-07-17 16:21:37:     36|                             document.getElementById("status").innerHTML = errorMessage;
+2024-07-17 16:21:37:     37|                         }
+2024-07-17 16:21:37: 
+2024-07-17 16:21:37: error is not defined
+2024-07-17 16:21:37:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs":12:26)
+2024-07-17 16:21:37:     at login (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 16:21:37:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 16:21:37:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 16:21:37:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 16:21:37:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 16:21:37:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 16:21:37:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:21:37:     at file:///todo/proyectos/duoc/Integracion/server.mjs:157:7
+2024-07-17 16:21:37:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:37: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs:34
+2024-07-17 16:21:37:     32|                     <script>
+2024-07-17 16:21:37:     33|                         // Mostrar mensaje de error si está presente
+2024-07-17 16:21:37:  >> 34|                         var errorMessage = "<%= error %>";
+2024-07-17 16:21:37:     35|                         if (errorMessage) {
+2024-07-17 16:21:37:     36|                             document.getElementById("status").innerHTML = errorMessage;
+2024-07-17 16:21:37:     37|                         }
+2024-07-17 16:21:37: 
+2024-07-17 16:21:37: error is not defined
+2024-07-17 16:21:37:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs":12:26)
+2024-07-17 16:21:37:     at login (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 16:21:37:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 16:21:37:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 16:21:37:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 16:21:37:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 16:21:37:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 16:21:37:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:21:37:     at file:///todo/proyectos/duoc/Integracion/server.mjs:157:7
+2024-07-17 16:21:37:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:37: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs:34
+2024-07-17 16:21:37:     32|                     <script>
+2024-07-17 16:21:37:     33|                         // Mostrar mensaje de error si está presente
+2024-07-17 16:21:37:  >> 34|                         var errorMessage = "<%= error %>";
+2024-07-17 16:21:37:     35|                         if (errorMessage) {
+2024-07-17 16:21:37:     36|                             document.getElementById("status").innerHTML = errorMessage;
+2024-07-17 16:21:37:     37|                         }
+2024-07-17 16:21:37: 
+2024-07-17 16:21:37: error is not defined
+2024-07-17 16:21:37:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/login.ejs":12:26)
+2024-07-17 16:21:37:     at login (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 16:21:37:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 16:21:37:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 16:21:37:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 16:21:37:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 16:21:37:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 16:21:37:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:21:37:     at file:///todo/proyectos/duoc/Integracion/server.mjs:157:7
+2024-07-17 16:21:37:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:48: TypeError: Cannot set properties of undefined (setting 'isAuthenticated')
+2024-07-17 16:21:48:     at file:///todo/proyectos/duoc/Integracion/server.mjs:342:33
+2024-07-17 16:21:48:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:48:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:21:48:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:21:48:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:48:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:21:48:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:21:48:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:21:48:     at /todo/proyectos/duoc/Integracion/node_modules/body-parser/lib/read.js:137:5
+2024-07-17 16:21:48:     at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+2024-07-17 16:21:49: TypeError: Cannot set properties of undefined (setting 'isAuthenticated')
+2024-07-17 16:21:49:     at file:///todo/proyectos/duoc/Integracion/server.mjs:342:33
+2024-07-17 16:21:49:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:49:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:21:49:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:21:49:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:49:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:21:49:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:21:49:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:21:49:     at /todo/proyectos/duoc/Integracion/node_modules/body-parser/lib/read.js:137:5
+2024-07-17 16:21:49:     at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+2024-07-17 16:21:59: TypeError: Cannot set properties of undefined (setting 'isAuthenticated')
+2024-07-17 16:21:59:     at file:///todo/proyectos/duoc/Integracion/server.mjs:342:33
+2024-07-17 16:21:59:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:59:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:21:59:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:21:59:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:21:59:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:21:59:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:21:59:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:21:59:     at /todo/proyectos/duoc/Integracion/node_modules/body-parser/lib/read.js:137:5
+2024-07-17 16:21:59:     at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+2024-07-17 16:22:09: TypeError: Cannot set properties of undefined (setting 'isAuthenticated')
+2024-07-17 16:22:09:     at file:///todo/proyectos/duoc/Integracion/server.mjs:342:33
+2024-07-17 16:22:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:22:09:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:22:09:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:22:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:22:09:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:22:09:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:22:09:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:22:09:     at /todo/proyectos/duoc/Integracion/node_modules/body-parser/lib/read.js:137:5
+2024-07-17 16:22:09:     at AsyncResource.runInAsyncScope (node:async_hooks:206:9)
+2024-07-17 16:36:12: Error: Failed to lookup view "login" in views directory "./viewsejs"
+2024-07-17 16:36:12:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:597:17)
+2024-07-17 16:36:12:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:36:12:     at file:///todo/proyectos/duoc/Integracion/server.mjs:349:9
+2024-07-17 16:36:12:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:36:12:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:36:12:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:36:12:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:36:12:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:36:12:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:36:12:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:36:23: Error: Failed to lookup view "login" in views directory "./viewsejs"
+2024-07-17 16:36:23:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:597:17)
+2024-07-17 16:36:23:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:36:23:     at file:///todo/proyectos/duoc/Integracion/server.mjs:349:9
+2024-07-17 16:36:23:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:36:23:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:36:23:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:36:23:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:36:23:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:36:23:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:36:23:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:36:29: Error: Failed to lookup view "login" in views directory "./viewsejs"
+2024-07-17 16:36:29:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:597:17)
+2024-07-17 16:36:29:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:36:29:     at file:///todo/proyectos/duoc/Integracion/server.mjs:349:9
+2024-07-17 16:36:29:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:36:29:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:36:29:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:36:29:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:36:29:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:36:29:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:36:29:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:36:41: Error: Failed to lookup view "login" in views directory "./viewsejs"
+2024-07-17 16:36:41:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:597:17)
+2024-07-17 16:36:41:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-17 16:36:41:     at file:///todo/proyectos/duoc/Integracion/server.mjs:349:9
+2024-07-17 16:36:41:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:36:41:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 16:36:41:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 16:36:41:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 16:36:41:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 16:36:41:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 16:36:41:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 16:41:35: SyntaxError: Missing catch or finally after try
+2024-07-17 16:41:35:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-17 16:41:35:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-17 16:41:35:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-17 16:41:35:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-17 16:42:14: SyntaxError: Unexpected token ','
+2024-07-17 16:42:14:     at ModuleLoader.moduleStrategy (node:internal/modules/esm/translators:167:18)
+2024-07-17 16:42:14:     at callTranslator (node:internal/modules/esm/loader:285:14)
+2024-07-17 16:42:14:     at ModuleLoader.moduleProvider (node:internal/modules/esm/loader:291:30)
+2024-07-17 16:42:14:     at async link (node:internal/modules/esm/module_job:76:21)
+2024-07-17 16:42:56: ReferenceError: pp is not defined
+2024-07-17 16:42:56:     at file:///todo/proyectos/duoc/Integracion/server.mjs:145:1
+2024-07-17 16:42:56:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2024-07-17 17:28:05: ReferenceError: db is not defined
+2024-07-17 17:28:05:     at file:///todo/proyectos/duoc/Integracion/server.mjs:475:3
+2024-07-17 17:28:05:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 17:28:05:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 17:28:05:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 17:28:05:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 17:28:05:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 17:28:05:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 17:28:05:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 17:28:05:     at urlencodedParser (/todo/proyectos/duoc/Integracion/node_modules/body-parser/lib/types/urlencoded.js:82:7)
+2024-07-17 17:28:05:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 17:28:59: ReferenceError: db is not defined
+2024-07-17 17:28:59:     at file:///todo/proyectos/duoc/Integracion/server.mjs:475:3
+2024-07-17 17:28:59:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 17:28:59:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 17:28:59:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 17:28:59:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 17:28:59:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 17:28:59:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 17:28:59:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 17:28:59:     at urlencodedParser (/todo/proyectos/duoc/Integracion/node_modules/body-parser/lib/types/urlencoded.js:82:7)
+2024-07-17 17:28:59:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 17:50:56: ReferenceError: db is not defined
+2024-07-17 17:50:56:     at file:///todo/proyectos/duoc/Integracion/server.mjs:692:7
+2024-07-17 17:50:56:     at Array.forEach (<anonymous>)
+2024-07-17 17:50:56:     at file:///todo/proyectos/duoc/Integracion/server.mjs:688:9
+2024-07-17 17:50:56:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 17:50:56:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 17:50:56:     at Route.dispatch (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:119:3)
+2024-07-17 17:50:56:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 17:50:56:     at /todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:284:15
+2024-07-17 17:50:56:     at Function.process_params (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:346:12)
+2024-07-17 17:50:56:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/index.js:280:10)
+2024-07-17 20:06:23: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/index.ejs:113
+2024-07-17 20:06:23:     111| 
+2024-07-17 20:06:23:     112|       
+2024-07-17 20:06:23:  >> 113|       <%- include('../modulos/modales.ejs');%>
+2024-07-17 20:06:23:     114|       <%- include('../modulos/scripts.ejs');%>
+2024-07-17 20:06:23:     115| 
+2024-07-17 20:06:23:     116|       <script>
+2024-07-17 20:06:23: 
+2024-07-17 20:06:23: /todo/proyectos/duoc/Integracion/viewsejs/modulos/modales.ejs:93
+2024-07-17 20:06:23:     91|                 <select class="form-select" id="tipoInput" name="tipoInput" required>
+2024-07-17 20:06:23:     92|                   <option value="" disabled selected>Seleccione una opción</option>
+2024-07-17 20:06:23:  >> 93|                   <% tipos.forEach(function(result) { %>
+2024-07-17 20:06:23:     94|                       <option value="<%= result.ID %>"><%= result.Tipo %></option>
+2024-07-17 20:06:23:     95|                   <% }); %>
+2024-07-17 20:06:23:     96|               </select>
+2024-07-17 20:06:23: 
+2024-07-17 20:06:23: tipos is not defined
+2024-07-17 20:06:23:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/modulos/modales.ejs":12:8)
+2024-07-17 20:06:23:     at modales (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 20:06:23:     at include (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:701:39)
+2024-07-17 20:06:23:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/index.ejs":21:17)
+2024-07-17 20:06:23:     at index (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 20:06:23:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 20:06:23:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 20:06:23:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 20:06:23:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 20:06:23:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 20:06:33: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/index.ejs:113
+2024-07-17 20:06:33:     111| 
+2024-07-17 20:06:33:     112|       
+2024-07-17 20:06:33:  >> 113|       <%- include('../modulos/modales.ejs');%>
+2024-07-17 20:06:33:     114|       <%- include('../modulos/scripts.ejs');%>
+2024-07-17 20:06:33:     115| 
+2024-07-17 20:06:33:     116|       <script>
+2024-07-17 20:06:33: 
+2024-07-17 20:06:33: /todo/proyectos/duoc/Integracion/viewsejs/modulos/modales.ejs:93
+2024-07-17 20:06:33:     91|                 <select class="form-select" id="tipoInput" name="tipoInput" required>
+2024-07-17 20:06:33:     92|                   <option value="" disabled selected>Seleccione una opción</option>
+2024-07-17 20:06:33:  >> 93|                   <% tipos.forEach(function(result) { %>
+2024-07-17 20:06:33:     94|                       <option value="<%= result.ID %>"><%= result.Tipo %></option>
+2024-07-17 20:06:33:     95|                   <% }); %>
+2024-07-17 20:06:33:     96|               </select>
+2024-07-17 20:06:33: 
+2024-07-17 20:06:33: tipos is not defined
+2024-07-17 20:06:33:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/modulos/modales.ejs":12:8)
+2024-07-17 20:06:33:     at modales (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 20:06:33:     at include (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:701:39)
+2024-07-17 20:06:33:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/index.ejs":21:17)
+2024-07-17 20:06:33:     at index (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 20:06:33:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 20:06:33:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 20:06:33:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 20:06:33:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 20:06:33:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 20:11:06: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/index.ejs:114
+2024-07-17 20:11:06:     112|       
+2024-07-17 20:11:06:     113|       <%- include('../modulos/modales.ejs');%>
+2024-07-17 20:11:06:  >> 114|       <%- include('../modulos/crearModal.ejs');%>
+2024-07-17 20:11:06:     115|       <%- include('../modulos/scripts.ejs');%>
+2024-07-17 20:11:06:     116| 
+2024-07-17 20:11:06:     117|       <script>
+2024-07-17 20:11:06: 
+2024-07-17 20:11:06: /todo/proyectos/duoc/Integracion/viewsejs/modulos/crearModal.ejs:51
+2024-07-17 20:11:06:     49|               <select class="form-select" id="tipoInput" name="tipoInput" required>
+2024-07-17 20:11:06:     50|                 <option value="" disabled selected>Seleccione una opción</option>
+2024-07-17 20:11:06:  >> 51|                 <% tipos.forEach(function(result) { %>
+2024-07-17 20:11:06:     52|                     <option value="<%= result.ID %>"><%= result.Tipo %></option>
+2024-07-17 20:11:06:     53|                 <% }); %>
+2024-07-17 20:11:06:     54|             </select>
+2024-07-17 20:11:06: 
+2024-07-17 20:11:06: tipos is not defined
+2024-07-17 20:11:06:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/modulos/crearModal.ejs":12:8)
+2024-07-17 20:11:06:     at crearModal (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 20:11:06:     at include (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:701:39)
+2024-07-17 20:11:06:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/index.ejs":24:17)
+2024-07-17 20:11:06:     at index (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 20:11:06:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 20:11:06:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 20:11:06:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 20:11:06:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 20:11:06:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 20:13:21: Error: /todo/proyectos/duoc/Integracion/viewsejs/views/index.ejs:116
+2024-07-17 20:13:21:     114|     </div>
+2024-07-17 20:13:21:     115| 
+2024-07-17 20:13:21:  >> 116|     <%-include('.. /modulos/carrito.ejs');%>
+2024-07-17 20:13:21:     117| 
+2024-07-17 20:13:21:     118| 
+2024-07-17 20:13:21:     119|       <%- include('../modulos/modales.ejs');%>
+2024-07-17 20:13:21: 
+2024-07-17 20:13:21: Could not find the include file ".. /modulos/carrito.ejs"
+2024-07-17 20:13:21:     at getIncludePath (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:185:13)
+2024-07-17 20:13:21:     at includeFile (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:311:19)
+2024-07-17 20:13:21:     at include (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:701:16)
+2024-07-17 20:13:21:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/index.ejs":18:16)
+2024-07-17 20:13:21:     at index (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 20:13:21:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 20:13:21:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 20:13:21:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 20:13:21:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 20:13:21:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 20:13:24: Error: /todo/proyectos/duoc/Integracion/viewsejs/views/index.ejs:116
+2024-07-17 20:13:24:     114|     </div>
+2024-07-17 20:13:24:     115| 
+2024-07-17 20:13:24:  >> 116|     <%-include('.. /modulos/carrito.ejs');%>
+2024-07-17 20:13:24:     117| 
+2024-07-17 20:13:24:     118| 
+2024-07-17 20:13:24:     119|       <%- include('../modulos/modales.ejs');%>
+2024-07-17 20:13:24: 
+2024-07-17 20:13:24: Could not find the include file ".. /modulos/carrito.ejs"
+2024-07-17 20:13:24:     at getIncludePath (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:185:13)
+2024-07-17 20:13:24:     at includeFile (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:311:19)
+2024-07-17 20:13:24:     at include (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:701:16)
+2024-07-17 20:13:24:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/index.ejs":18:16)
+2024-07-17 20:13:24:     at index (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-17 20:13:24:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-17 20:13:24:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-17 20:13:24:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-17 20:13:24:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-17 20:13:24:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-17 21:50:27: Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''23', '42', '12', 
+2024-07-17 21:50:27:         Peso = '0', 
+2024-07-17 21:50:27:         Color = 'Negro', 
+2024-07-17 21:50:27:         Gar...' at line 6
+2024-07-17 21:50:27:     at PromisePool.query (/todo/proyectos/duoc/Integracion/node_modules/mysql2/promise.js:356:22)
+2024-07-17 21:50:27:     at file:///todo/proyectos/duoc/Integracion/server.mjs:406:24
+2024-07-17 21:50:27:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 21:50:27:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 21:50:27:     at done (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:45:7)
+2024-07-17 21:50:27:     at indicateDone (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:49:68)
+2024-07-17 21:50:27:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:166:7)
+2024-07-17 21:50:27:     at Multipart.emit (node:events:518:28)
+2024-07-17 21:50:27:     at emitCloseNT (node:internal/streams/destroy:147:10)
+2024-07-17 21:50:27:     at process.processTicksAndRejections (node:internal/process/task_queues:81:21) {
+2024-07-17 21:50:27:   code: 'ER_PARSE_ERROR',
+2024-07-17 21:50:27:   errno: 1064,
+2024-07-17 21:50:27:   sql: '\n' +
+2024-07-17 21:50:27:     '      UPDATE productos\n' +
+2024-07-17 21:50:27:     '      SET \n' +
+2024-07-17 21:50:27:     "        Nombre = 'Guantes Lindos', \n" +
+2024-07-17 21:50:27:     "        ID_Tipo = '1', \n" +
+2024-07-17 21:50:27:     "        Precio = '1200', \n" +
+2024-07-17 21:50:27:     "        Cantidad = '41', '23', '42', '12', \n" +
+2024-07-17 21:50:27:     "        Peso = '0', \n" +
+2024-07-17 21:50:27:     "        Color = 'Negro', \n" +
+2024-07-17 21:50:27:     "        Garantia = '5', \n" +
+2024-07-17 21:50:27:     "        Modelo = 'Generico'\n" +
+2024-07-17 21:50:27:     "      WHERE ID = '2'",
+2024-07-17 21:50:27:   sqlState: '42000',
+2024-07-17 21:50:27:   sqlMessage: "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''23', '42', '12', \n" +
+2024-07-17 21:50:27:     "        Peso = '0', \n" +
+2024-07-17 21:50:27:     "        Color = 'Negro', \n" +
+2024-07-17 21:50:27:     "        Gar...' at line 6"
+2024-07-17 21:50:27: }
+2024-07-17 21:53:09: Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''23', '42', '12',
+2024-07-17 21:53:09:         Stock_Central = NULL, 
+2024-07-17 21:53:09:         Stock_Centro = NULL,...' at line 6
+2024-07-17 21:53:09:     at PromisePool.query (/todo/proyectos/duoc/Integracion/node_modules/mysql2/promise.js:356:22)
+2024-07-17 21:53:09:     at file:///todo/proyectos/duoc/Integracion/server.mjs:412:24
+2024-07-17 21:53:09:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 21:53:09:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 21:53:09:     at done (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:45:7)
+2024-07-17 21:53:09:     at indicateDone (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:49:68)
+2024-07-17 21:53:09:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:166:7)
+2024-07-17 21:53:09:     at Multipart.emit (node:events:518:28)
+2024-07-17 21:53:09:     at emitCloseNT (node:internal/streams/destroy:147:10)
+2024-07-17 21:53:09:     at process.processTicksAndRejections (node:internal/process/task_queues:81:21) {
+2024-07-17 21:53:09:   code: 'ER_PARSE_ERROR',
+2024-07-17 21:53:09:   errno: 1064,
+2024-07-17 21:53:09:   sql: '\n' +
+2024-07-17 21:53:09:     '      UPDATE productos\n' +
+2024-07-17 21:53:09:     '      SET \n' +
+2024-07-17 21:53:09:     "        Nombre = 'Guantes De Fibra', \n" +
+2024-07-17 21:53:09:     "        ID_Tipo = '2', \n" +
+2024-07-17 21:53:09:     "        Precio = '1200', \n" +
+2024-07-17 21:53:09:     "        Cantidad = '43', '23', '42', '12',\n" +
+2024-07-17 21:53:09:     '        Stock_Central = NULL, \n' +
+2024-07-17 21:53:09:     '        Stock_Centro = NULL, \n' +
+2024-07-17 21:53:09:     '        Stock_Norte = NULL, \n' +
+2024-07-17 21:53:09:     "        Peso = '0', \n" +
+2024-07-17 21:53:09:     "        Color = 'Negro', \n" +
+2024-07-17 21:53:09:     "        Garantia = '5', \n" +
+2024-07-17 21:53:09:     "        Modelo = 'Generico'\n" +
+2024-07-17 21:53:09:     "      WHERE ID = '2'",
+2024-07-17 21:53:09:   sqlState: '42000',
+2024-07-17 21:53:09:   sqlMessage: "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''23', '42', '12',\n" +
+2024-07-17 21:53:09:     '        Stock_Central = NULL, \n' +
+2024-07-17 21:53:09:     "        Stock_Centro = NULL,...' at line 6"
+2024-07-17 21:53:09: }
+2024-07-17 21:57:11: Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''23', '42', '12',
+2024-07-17 21:57:11:         Stock_Central = NULL, 
+2024-07-17 21:57:11:         Stock_Norte = NULL,
+2024-07-17 21:57:11: ...' at line 6
+2024-07-17 21:57:11:     at PromisePool.query (/todo/proyectos/duoc/Integracion/node_modules/mysql2/promise.js:356:22)
+2024-07-17 21:57:11:     at file:///todo/proyectos/duoc/Integracion/server.mjs:412:24
+2024-07-17 21:57:11:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
+2024-07-17 21:57:11:     at next (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/route.js:149:13)
+2024-07-17 21:57:11:     at done (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:45:7)
+2024-07-17 21:57:11:     at indicateDone (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:49:68)
+2024-07-17 21:57:11:     at Multipart.<anonymous> (/todo/proyectos/duoc/Integracion/node_modules/multer/lib/make-middleware.js:166:7)
+2024-07-17 21:57:11:     at Multipart.emit (node:events:518:28)
+2024-07-17 21:57:11:     at emitCloseNT (node:internal/streams/destroy:147:10)
+2024-07-17 21:57:11:     at process.processTicksAndRejections (node:internal/process/task_queues:81:21) {
+2024-07-17 21:57:11:   code: 'ER_PARSE_ERROR',
+2024-07-17 21:57:11:   errno: 1064,
+2024-07-17 21:57:11:   sql: '\n' +
+2024-07-17 21:57:11:     '      UPDATE productos\n' +
+2024-07-17 21:57:11:     '      SET \n' +
+2024-07-17 21:57:11:     "        Nombre = 'Guantes', \n" +
+2024-07-17 21:57:11:     "        ID_Tipo = '1', \n" +
+2024-07-17 21:57:11:     "        Precio = '1200', \n" +
+2024-07-17 21:57:11:     "        Cantidad = '413', '23', '42', '12',\n" +
+2024-07-17 21:57:11:     '        Stock_Central = NULL, \n' +
+2024-07-17 21:57:11:     '        Stock_Norte = NULL,\n' +
+2024-07-17 21:57:11:     '        Stock_Centro = NULL, \n' +
+2024-07-17 21:57:11:     "        Peso = '0', \n" +
+2024-07-17 21:57:11:     "        Color = 'Negro', \n" +
+2024-07-17 21:57:11:     "        Garantia = '5', \n" +
+2024-07-17 21:57:11:     "        Modelo = 'Generico'\n" +
+2024-07-17 21:57:11:     "      WHERE ID = '2'",
+2024-07-17 21:57:11:   sqlState: '42000',
+2024-07-17 21:57:11:   sqlMessage: "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''23', '42', '12',\n" +
+2024-07-17 21:57:11:     '        Stock_Central = NULL, \n' +
+2024-07-17 21:57:11:     '        Stock_Norte = NULL,\n' +
+2024-07-17 21:57:11:     "...' at line 6"
+2024-07-17 21:57:11: }
+2024-07-19 19:21:18: ReferenceError: /todo/proyectos/duoc/Integracion/viewsejs/views/orden.ejs:39
+2024-07-19 19:21:18:     37|                   
+2024-07-19 19:21:18:     38|                 </div>
+2024-07-19 19:21:18:  >> 39|                 <form action="<%= url %>" method="POST">
+2024-07-19 19:21:18:     40|                 <div class="itemDetails">
+2024-07-19 19:21:18:     41|                   <h3>Entrega Estimada <span id="fechaEntrega"></span></h3>
+2024-07-19 19:21:18:     42|                   <p id="ordenGenerada">ORDEN # </p>
+2024-07-19 19:21:18: 
+2024-07-19 19:21:18: url is not defined
+2024-07-19 19:21:18:     at eval ("/todo/proyectos/duoc/Integracion/viewsejs/views/orden.ejs":18:26)
+2024-07-19 19:21:18:     at orden (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:703:17)
+2024-07-19 19:21:18:     at tryHandleCache (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:274:36)
+2024-07-19 19:21:18:     at exports.renderFile [as engine] (/todo/proyectos/duoc/Integracion/node_modules/ejs/lib/ejs.js:491:10)
+2024-07-19 19:21:18:     at View.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/view.js:135:8)
+2024-07-19 19:21:18:     at tryRender (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:657:10)
+2024-07-19 19:21:18:     at Function.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/application.js:609:3)
+2024-07-19 19:21:18:     at ServerResponse.render (/todo/proyectos/duoc/Integracion/node_modules/express/lib/response.js:1048:7)
+2024-07-19 19:21:18:     at file:///todo/proyectos/duoc/Integracion/server.mjs:166:9
+2024-07-19 19:21:18:     at Layer.handle [as handle_request] (/todo/proyectos/duoc/Integracion/node_modules/express/lib/router/layer.js:95:5)
