@@ -19,24 +19,30 @@
     <br>
 
   <div class="container">
-<div class="customer_details orderList">
-             
-            </div> 
-            <div id="order_tab" class="orderCardWrap tab-content1 current">
-              <div class="orderCard">
+    <div class="customer_details orderList">
+        <form id="buscarPedidoForm" class="mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" id="numeroOrden" placeholder="Número de pedido">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </div>
+        </form>
+    </div>
+    <div id="order_tab" class="orderCardWrap tab-content1 current">
+        <% if (typeof error !== 'undefined' && error) { %>
+            <div class="orderCard">
                 <div class="orderHead">
-                  <ul class="orderLeft">
-                    <li>
-                    </li>
-                    <li>
-                    </li>                
-                  </ul>
-                  
-                    
-                  
+                    <h2><%= error %></h2>
+                </div>
+            </div>
+        <% } else if (orden) { %>
+            <div class="orderCard">
+                <div class="orderHead">
+                    <ul class="orderLeft">
+                        <li></li>
+                        <li></li>
+                    </ul>
                 </div>
                 <div class="itemDetails return">
-
                     <h1 class="">Su orden: <%= orden.Numero_Orden %></h1>
                     <p>Fecha de Pedido: <%= orden.Fecha_Actual %></p>
                     <p>Fecha de Despacho: <%= orden.Fecha_Despacho %></p>
@@ -52,36 +58,174 @@
                         </li>
                         <% } %>
                     </ul>
-                    <% if (orden.Aceptado === 1) { %>
-                        <h2>Producto en Ruta</h2>
-                      <% } else { %>
-                        <h2>Producto no despachado</h2>
-                      <% } %>
                     
-
-                    
-                  
-                  
-                    
-                    
-                  <div class="btn_group" style="margin-top: 50px;">
-
-                  </div>
+                    <div style="margin-top: 20px; padding: 15px; border-radius: 8px; background-color: #f8f9fa;">
+                        <h2 style="color: #2c3e50;">Estado del Pedido:</h2>
+                        <% 
+                        let estadoTexto = orden.Estado || (orden.Aceptado === 1 ? 'En Despacho' : 'Pendiente');
+                        let estadoColor = '#6c757d'; // Color por defecto
+                        
+                        switch(estadoTexto) {
+                            case 'Pendiente':
+                                estadoColor = '#ffc107';
+                                break;
+                            case 'En Preparación':
+                                estadoColor = '#17a2b8';
+                                break;
+                            case 'En Despacho':
+                                estadoColor = '#007bff';
+                                break;
+                            case 'Entregado':
+                                estadoColor = '#28a745';
+                                break;
+                            case 'Cancelado':
+                                estadoColor = '#dc3545';
+                                break;
+                        }
+                        %>
+                        <p style="font-size: 1.2em; font-weight: bold; color: <%= estadoColor %>;">
+                            <%= estadoTexto %>
+                        </p>
+                        
+                        <% if (estadoTexto === 'Pendiente') { %>
+                            <p style="color: #6c757d;">Su pedido está siendo procesado. Pronto será preparado para el despacho.</p>
+                        <% } else if (estadoTexto === 'En Preparación') { %>
+                            <p style="color: #6c757d;">Su pedido está siendo preparado en nuestro almacén.</p>
+                        <% } else if (estadoTexto === 'En Despacho') { %>
+                            <p style="color: #6c757d;">Su pedido está en camino. Llegará en la fecha estimada.</p>
+                        <% } else if (estadoTexto === 'Entregado') { %>
+                            <p style="color: #6c757d;">Su pedido ha sido entregado exitosamente. ¡Gracias por su compra!</p>
+                        <% } else if (estadoTexto === 'Cancelado') { %>
+                            <p style="color: #6c757d;">Su pedido ha sido cancelado. Si tiene dudas, contáctenos.</p>
+                        <% } %>
+                    </div>
                 </div>
-              </div>
             </div>
-           
+        <% } %>
+    </div>
+</div>
 
-           
-                
-                
-              
-            </div>
-           </div>
+  <%- include('../modulos/scripts.ejs');%>
+
+  <script>
+    document.getElementById('buscarPedidoForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const numeroOrden = document.getElementById('numeroOrden').value;
+      
+      if (!numeroOrden.trim()) {
+        alert('Por favor ingrese un número de orden');
+        return;
+      }
+      
+      try {
+        const response = await fetch('/buscarPedido', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ numeroOrden }),
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            mostrarResultadoPedido(data);
+            document.getElementById('numeroOrden').value = '';
+        } else {
+            mostrarError(data.error || 'Error al buscar el pedido');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        mostrarError('Error al buscar el pedido');
+      }
+    });
+
+    function mostrarResultadoPedido(orden) {
+      const orderTab = document.getElementById('order_tab');
+      
+      // Determinar el estado y color
+      let estadoTexto = orden.Estado || (orden.Aceptado === 1 ? 'En Despacho' : 'Pendiente');
+      let estadoColor = '#6c757d';
+      let descripcionEstado = '';
+      
+      switch(estadoTexto) {
+        case 'Pendiente':
+          estadoColor = '#ffc107';
+          descripcionEstado = 'Su pedido está siendo procesado. Pronto será preparado para el despacho.';
+          break;
+        case 'En Preparación':
+          estadoColor = '#17a2b8';
+          descripcionEstado = 'Su pedido está siendo preparado en nuestro almacén.';
+          break;
+        case 'En Despacho':
+          estadoColor = '#007bff';
+          descripcionEstado = 'Su pedido está en camino. Llegará en la fecha estimada.';
+          break;
+        case 'Entregado':
+          estadoColor = '#28a745';
+          descripcionEstado = 'Su pedido ha sido entregado exitosamente. ¡Gracias por su compra!';
+          break;
+        case 'Cancelado':
+          estadoColor = '#dc3545';
+          descripcionEstado = 'Su pedido ha sido cancelado. Si tiene dudas, contáctenos.';
+          break;
+      }
+
+      // Crear lista de productos
+      let productosHTML = '';
+      for (let i = 0; i < orden.Items.length; i++) {
+        productosHTML += `
+          <li>
+            Producto: ${orden.Items[i]}<br>
+            Precio: $${orden.Precios[i]}<br>
+            Cantidad: ${orden.Cantidades[i]}
+          </li>
+        `;
+      }
+      
+      orderTab.innerHTML = `
+        <div class="orderCard">
+          <div class="orderHead">
+            <ul class="orderLeft">
+              <li></li>
+              <li></li>
+            </ul>
           </div>
+          <div class="itemDetails return">
+            <h1>Su orden: ${orden.Numero_Orden}</h1>
+            <p>Fecha de Pedido: ${orden.Fecha_Actual}</p>
+            <p>Fecha de Despacho: ${orden.Fecha_Despacho}</p>
+            <p>SubTotal: $${orden.Total}</p>
+            <p>Total: $${orden.Total_Despacho}</p>
+            <h2>Detalles de los productos:</h2>
+            <ul>
+              ${productosHTML}
+            </ul>
+            
+            <div style="margin-top: 20px; padding: 15px; border-radius: 8px; background-color: #f8f9fa;">
+              <h2 style="color: #2c3e50;">Estado del Pedido:</h2>
+              <p style="font-size: 1.2em; font-weight: bold; color: ${estadoColor};">
+                ${estadoTexto}
+              </p>
+              <p style="color: #6c757d;">${descripcionEstado}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
 
-
-          <%- include('../modulos/scripts.ejs');%>
+    function mostrarError(mensaje) {
+      const orderTab = document.getElementById('order_tab');
+      orderTab.innerHTML = `
+        <div class="orderCard">
+          <div class="orderHead">
+            <h2 style="color: #dc3545;">${mensaje}</h2>
+          </div>
+        </div>
+      `;
+    }
+  </script>
 
   </body>
 

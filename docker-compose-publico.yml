@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # Base de datos MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: ferremax-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: ferremax
+      MYSQL_USER: ferremax_user
+      MYSQL_PASSWORD: ferremax_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./ferremax.sql:/docker-entrypoint-initdb.d/ferremax.sql
+    networks:
+      - ferremax-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Aplicación Node.js - USANDO IMAGEN DE DOCKER HUB
+  app:
+    # Imagen subida a Docker Hub
+    image: luissalamanca24/ferremax-app:latest
+    container_name: ferremax-app
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      # Variables de base de datos
+      DB_User: ferremax_user
+      DB_Pass: ferremax_pass
+      
+      # Puerto de la aplicación
+      PUERTO: 3000
+      
+      # Variables de email (configura con tus credenciales)
+      EMAIL_USER: tu_email@gmail.com
+      EMAIL_PASS: tu_contraseña_de_aplicacion
+      
+      # API Keys (configura con tus claves reales)
+      APiKeyopenweather: tu_api_key_openweather
+      APikeyCMF: tu_api_key_cmf
+      
+      # Configuración de Webpay (para desarrollo)
+      WEBPAY_ENVIRONMENT: DEVELOPMENT
+      WEBPAY_COMMERCE_CODE: 597055555532
+      WEBPAY_API_KEY: 579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./LOG:/app/LOG
+    networks:
+      - ferremax-network
+
+  # phpMyAdmin para gestión de base de datos
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: ferremax-phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root123
+      MYSQL_ROOT_PASSWORD: root123
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - ferremax-network
+
+volumes:
+  mysql_data:
+
+networks:
+  ferremax-network:
+    driver: bridge 

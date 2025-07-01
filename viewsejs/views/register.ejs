@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Registro - Ferremax</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div id="background">
+        <div id="startpage">
+            <form id="register_form" action="/register" method="POST">
+                <span id="header">Registro de Usuario</span>
+                <br><br>
+                <input type="text" name="username" id="reguser" placeholder="Nombre de Usuario" class="input" required>
+                <br><br>
+                <input type="password" name="password" id="regpass" placeholder="Contraseña" class="input" required>
+                <br><br>
+                <input type="password" name="confirmPassword" id="confirmpass" placeholder="Confirmar Contraseña" class="input" required>
+                <br><br><br>
+                <button type="submit" id="button" class="enterbtn">Registrarse</button>
+                <br><br>
+                <div id="buttons">
+                    <button type="button" onclick="showStuff()" id="show_button" class="btn">Mostrar Contraseñas</button>
+                </div>
+                <br>
+                
+                <% if (error) { %>
+                    <span id="status" style="color: red;">
+                        <%= error %>
+                    </span>
+                <% } %>
+                
+                <% if (success) { %>
+                    <span id="status" style="color: green;">
+                        <%= success %>
+                    </span>
+                <% } %>
+                
+                <br><br>
+                <div style="text-align: center;">
+                    <a href="/login" style="color: #fff; text-decoration: underline;">¿Ya tienes cuenta? Iniciar Sesión</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let regpass = document.getElementById("regpass");
+        let confirmpass = document.getElementById("confirmpass");
+        var show = true;
+        var show_button = document.getElementById("show_button");
+
+        function showStuff() {
+            if (show) {
+                regpass.type = "text";
+                confirmpass.type = "text";
+                show_button.innerHTML = "Ocultar Contraseñas";
+                show = false;
+            } else {
+                regpass.type = "password";
+                confirmpass.type = "password";
+                show_button.innerHTML = "Mostrar Contraseñas";
+                show = true;
+            }
+        }
+    </script>
+</body>
+
+</html> 

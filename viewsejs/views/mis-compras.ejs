@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../modulos/head.ejs'); %>
+    <title>Mis Compras - Ferremax</title>
+    <style>
+        .compras-container {
+            padding: 100px 0 50px;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .compra-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        
+        .compra-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .orden-numero {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .estado-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.9em;
+        }
+        
+        .estado-pendiente { background-color: #ffc107; }
+        .estado-preparacion { background-color: #17a2b8; }
+        .estado-despacho { background-color: #007bff; }
+        .estado-entregado { background-color: #28a745; }
+        .estado-cancelado { background-color: #dc3545; }
+        
+        .compra-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .detail-item {
+            text-align: center;
+        }
+        
+        .detail-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .productos-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .no-compras {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+        
+        .btn-ver-detalle {
+            background: #ff7846;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .btn-ver-detalle:hover {
+            background: #e56a3f;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../modulos/navbar.ejs'); %>
+    
+    <div class="compras-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center mb-4">Mi Historial de Compras</h2>
+                    <p class="text-center text-muted mb-5">Bienvenido <%= user.username %>, aquí puedes revisar todas tus compras</p>
+                    
+                    <% if (typeof error !== 'undefined' && error) { %>
+                        <div class="alert alert-danger text-center">
+                            <%= error %>
+                        </div>
+                    <% } %>
+                    
+                    <% if (orders && orders.length > 0) { %>
+                        <% orders.forEach(order => { %>
+                            <div class="compra-card">
+                                <div class="compra-header">
+                                    <div class="orden-numero">
+                                        Orden #<%= order.Numero_Orden %>
+                                    </div>
+                                    <div class="estado-badge estado-<%= (order.Estado || 'pendiente').toLowerCase().replace(' ', '') %>">
+                                        <%= order.Estado || 'Pendiente' %>
+                                    </div>
+                                </div>
+                                
+                                <div class="compra-details">
+                                    <div class="detail-item">
+                                        <div class="detail-label">Fecha de Pedido</div>
+                                        <div class="detail-value">
+                                            <%= new Date(order.Fecha_Actual).toLocaleDateString('es-CL') %>
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">Fecha de Entrega</div>
+                                        <div class="detail-value">
+                                            <%= new Date(order.Fecha_Despacho).toLocaleDateString('es-CL') %>
+                                        </div>
+                                    </div>
+                                    <div class="detail-item">
+                                        <div class="detail-label">Total</div>
+                                        <div class="detail-value">
+                                            $<%= order.Total_Despacho.toLocaleString('es-CL') %>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <% try { %>
+                                    <% const items = typeof order.Items === 'string' ? JSON.parse(order.Items) : order.Items; %>
+                                    <% const cantidades = typeof order.Cantidades === 'string' ? JSON.parse(order.Cantidades) : order.Cantidades; %>
+                                    <div class="productos-list">
+                                        <strong>Productos:</strong>
+                                        <ul class="mb-0 mt-2">
+                                            <% items.forEach((item, index) => { %>
+                                                <li><%= item %> (Cantidad: <%= cantidades[index] || 1 %>)</li>
+                                            <% }); %>
+                                        </ul>
+                                    </div>
+                                <% } catch(e) { %>
+                                    <div class="productos-list">
+                                        <strong>Productos:</strong> No se pudieron cargar los detalles
+                                    </div>
+                                <% } %>
+                                
+                                <div class="text-right">
+                                    <a href="/orden/<%= order.Numero_Orden %>" class="btn-ver-detalle">
+                                        Ver Detalle Completo
+                                    </a>
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="no-compras">
+                            <h4>No tienes compras registradas</h4>
+                            <p>¡Empieza a comprar para ver tu historial aquí!</p>
+                            <a href="/productos" class="btn-ver-detalle">Ver Productos</a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <%- include('../modulos/scripts.ejs'); %>
+</body>
+
+</html> 

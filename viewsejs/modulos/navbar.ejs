@@ -1,4 +1,3 @@
-
 <div class="marquee">
     <div id="barraQueSeMueve" class="barraQueSeMueve"></div>
   </div> 
@@ -15,8 +14,21 @@
                       <li><a href="/productos">Productos</a></li>
                       <li><a href="/tiendas">Sucursales</a></li>
                       <li><a href="#" onclick="seguirOrden()">Seguimiento</a></li>
+                      <!-- Enlace a Mis Compras (solo visible para usuarios autenticados) -->
+                      <li id="mis-compras-link" style="display: none;">
+                        <a href="/mis-compras">Mis Compras</a>
+                      </li>
                       <!--                       <li><a href="#" id="weather">Clima: <span id="weather-info"></span></a></li>
  -->                      <li><a href="#" onclick="openCartModal()"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                      
+                      <!-- Indicadores de autenticación -->
+                      <li id="auth-indicator">
+                        <span id="user-info" style="display: none; color: #fff; margin-right: 10px;">
+                          Bienvenido, <span id="username"></span>
+                        </span>
+                        <a href="/login" id="login-btn">Iniciar Sesión</a>
+                        <a href="/logout" id="logout-btn" style="display: none;">Cerrar Sesión</a>
+                      </li>
                   </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -26,3 +38,41 @@
         </div>
     </div>
   </header>
+
+  <script>
+    // Función para verificar el estado de autenticación
+    async function checkAuthStatus() {
+      try {
+        const response = await fetch('/api/check-auth');
+        const data = await response.json();
+        
+        const userInfo = document.getElementById('user-info');
+        const username = document.getElementById('username');
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const misComprasLink = document.getElementById('mis-compras-link');
+        
+        if (data.isAuthenticated) {
+          userInfo.style.display = 'inline';
+          username.textContent = data.user.username;
+          loginBtn.style.display = 'none';
+          logoutBtn.style.display = 'inline';
+          
+          // Mostrar "Mis Compras" solo para usuarios clientes
+          if (data.user.rol === 'cliente') {
+            misComprasLink.style.display = 'block';
+          }
+        } else {
+          userInfo.style.display = 'none';
+          loginBtn.style.display = 'inline';
+          logoutBtn.style.display = 'none';
+          misComprasLink.style.display = 'none';
+        }
+      } catch (error) {
+        console.error('Error verificando autenticación:', error);
+      }
+    }
+    
+    // Verificar estado de autenticación al cargar la página
+    document.addEventListener('DOMContentLoaded', checkAuthStatus);
+  </script>

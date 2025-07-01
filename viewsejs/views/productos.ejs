@@ -23,9 +23,9 @@
         <ul class="properties-filter">
           <li><a class="is_active" href="#!" onclick="obtenerProductos('/api/productos')">Mostrar Todo</a></li>
           <li><a href="#!" onclick="obtenerProductos('/api/productos/?Tipo=Herramientas%20Manuales')">Herramientas Manuales</a></li>
-          <li><a href="#!" onclick="obtenerProductos('/api/productos/?Tipo=Materiales%20Básicos')">Materiales Básicos</a></li>
-          <li><a href="#!" onclick="obtenerProductos('/api/productos/?Tipo=Equipos%20de%20Seguridad')">Equipos de Seguridad</a></li>
-
+          <li><a href="#!" onclick="obtenerProductos('/api/productos/?Tipo=Herramientas%20Eléctricas')">Herramientas Eléctricas</a></li>
+          <li><a href="#!" onclick="obtenerProductos('/api/productos/?Tipo=Materiales%20de%20Construcción')">Materiales de Construcción</a></li>
+          <li><a href="#!" onclick="obtenerProductos('/api/productos/?Tipo=Ferretería')">Ferretería</a></li>
         </ul>
 
       
@@ -90,10 +90,7 @@ async function obtenerProductos (url='/api/productos') {
             category.textContent = product.Tipo; 
             
             const price = document.createElement('h6');
-             const priceDolar = document.createElement('p');
-            priceDolar.classList.add('precioDolar')
             price.textContent = `$${product.Precio}`; 
-            priceDolar.textContent = ` $${Number((product.Precio/product.CMF.Dolar).toFixed(2))} USD`;
             const title = document.createElement('h4');
             const titleLink = document.createElement('a');
             titleLink.href = "property-details.html"; 
@@ -135,7 +132,6 @@ async function obtenerProductos (url='/api/productos') {
             item.appendChild(link);
             item.appendChild(category);
             item.appendChild(price);
-            item.appendChild(priceDolar);
             item.appendChild(title);
             item.appendChild(ul);
             item.appendChild(mainButton);

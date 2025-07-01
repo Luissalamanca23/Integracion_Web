@@ -1,0 +1,64 @@
+# Dependencias de Node.js
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de Git
+.git
+.gitignore
+
+# Archivos de configuración local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+*.log
+LOG/*
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Archivos de Docker
+Dockerfile
+docker-compose.yml
+docker-compose-publico.yml
+.dockerignore
+
+# Scripts de build y deployment
+build-and-push.bat
+build-and-push.sh
+crear-env.bat
+crear-env.sh
+docker-start.bat
+docker-start.sh
+
+# README y documentación
+README.md
+README-Docker.md
+INSTRUCCIONES-INSTALACION.md
+DISTRIBUCION-SIMPLE.md
+
+# Archivos de configuración de ejemplo
+env.example
+ecosystem.json
+
+# Archivos de base de datos
+ferremax.sql
+
+# Directorio virtual de Python (si existe)
+ferramax/ 

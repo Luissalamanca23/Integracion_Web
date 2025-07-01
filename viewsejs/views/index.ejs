@@ -24,7 +24,9 @@
     
     
       <div class="properties section">
-        <div class="container" id="product-container">      
+        <div class="container">
+          <div class="row properties-box" id="product-container">      
+          </div>
         </div>
       </div>
           
@@ -114,6 +116,26 @@
       <%- include('../modulos/scripts.ejs');%>
 
       <script>
+        // Verificar si hay mensaje de login exitoso en la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('login') === 'success') {
+          // Esperar a que se cargue la información del usuario
+          setTimeout(async () => {
+            try {
+              const response = await fetch('/api/check-auth');
+              const data = await response.json();
+              if (data.isAuthenticated) {
+                alert(`¡Bienvenido ${data.user.username}! Has iniciado sesión exitosamente.\n\nAhora puedes realizar compras en nuestra tienda.`);
+                
+                // Limpiar la URL removiendo el parámetro
+                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.replaceState({path: newUrl}, '', newUrl);
+              }
+            } catch (error) {
+              console.error('Error verificando autenticación:', error);
+            }
+          }, 1000);
+        }
         
         document.getElementById('contact-form').addEventListener('submit',  function() {
           alert('Correo enviado Éxitosamente')
@@ -132,134 +154,115 @@
                 console.log(result);
                 const productContainer = document.getElementById('product-container');
 
-          
-  
+                productContainer.innerHTML = '';
 
-          productContainer.innerHTML = '';
+                // Configurar el modal una sola vez, fuera del bucle
+                const stockWeb = document.getElementById('stockWebProducto');
+                const stockCentral = document.getElementById('stockCentralProducto');
+                const stockNorte = document.getElementById('stockNorteProducto');
+                const stockCentro = document.getElementById('stockCentroProducto');
 
+                const modalMasInfo = document.getElementById('masInfo');
+                modalMasInfo.addEventListener('hidden.bs.modal', function (event) {
+                    // Función que se ejecutará cada vez que se cierre el modal
+                    stockWeb.innerHTML = '';
+                    stockCentral.innerHTML = '';
+                    stockNorte.innerHTML = '';
+                    stockCentro.innerHTML = '';
+                });
 
+                let row; 
 
+                result.forEach((product,index) => {
+                    if (index % 3 === 0) {
+                        row = document.createElement('div');
+                        row.classList.add('row');
+                        productContainer.appendChild(row);
+                    }
 
+                    const col = document.createElement('div');
+                    col.classList.add('col-lg-4', 'col-md-6');
+                    
+                    const item = document.createElement('div');
+                    item.classList.add('item');
+                    
+                    const link = document.createElement('a');
+                    link.href = "#"; 
+                    link.setAttribute('data-bs-toggle', 'modal');
+                    link.setAttribute('data-bs-target', '#masInfo');
+                    link.addEventListener('click', () => {
+                        stockWeb.innerHTML = 'Stock Web: ' + product.Cantidad;
+                        stockCentral.innerHTML = 'Stock Sucursal Central: ' + product.Stock_Central;
+                        stockNorte.innerHTML = 'Stock Sucursal Norte: ' + product.Stock_Norte;
+                        stockCentro.innerHTML = 'Stock Sucursal Centro: ' + product.Stock_Centro;
+                    });
+                    
+                    const img = document.createElement('img');
+                    if (product.Img) {
+                        img.src = `data:image/jpeg;base64,${product.Img}`;
+                    } else {
+                        img.src = '/assets/img/taladro2.jpg'; // Imagen estática en caso de no tener imagen en el producto
+                    }
+                    img.alt = "";
+                    link.appendChild(img);
+                    
+                    const category = document.createElement('span');
+                    category.classList.add('category');
+                    category.textContent = product.Tipo; 
+                    
+                    const price = document.createElement('h6');
+                    price.textContent = `$${product.Precio}`; 
+                    
+                    const title = document.createElement('h4');
+                    const titleLink = document.createElement('a');
+                    titleLink.textContent = product.Nombre; 
+                    title.appendChild(titleLink);
+                    
+                    const ul = document.createElement('ul');
+                    
+                    const liRooms = document.createElement('li');
+                    liRooms.textContent = `Stock Web: ${product.Cantidad}`; 
+                    ul.appendChild(liRooms);
+                    
+                    const liBathrooms = document.createElement('li');
+                    liBathrooms.textContent = `Color: ${product.Color}`; 
+                    ul.appendChild(liBathrooms);
+                    
+                    const liArea = document.createElement('li');
+                    liArea.textContent = `Modelo: ${product.Modelo}`;
+                    ul.appendChild(liArea);
+                    
+                    const liFloors = document.createElement('li');
+                    liFloors.textContent = `Garantía: ${product.Garantia} Meses`; 
+                    ul.appendChild(liFloors);
+                    
+                    const liParking = document.createElement('li');
+                    liParking.textContent = `Peso: ${product.Peso} KG`; 
+                    ul.appendChild(liParking);
+                    
+                    const mainButton = document.createElement('div');
+                    mainButton.classList.add('main-button');
+                    const buttonLink = document.createElement('a');
+                    buttonLink.href = "#";
+                    buttonLink.textContent = "Agregar a tu carrito";
+                    let enviar = JSON.stringify(product)
+                    buttonLink.setAttribute('onclick',`agregarAlCarrito(${enviar})`);
+                    mainButton.appendChild(buttonLink);
 
-          let row; 
-
-
-          result.forEach((product,index) => {
-            if (index % 3 === 0) {
-              row = document.createElement('div');
-              row.classList.add('row');
-              productContainer.appendChild(row);
-            }
-            
-            
-            
-            const stockWeb = document.getElementById('stockWebProducto');
-      const stockCentral = document.getElementById('stockCentralProducto');
-      const stockNorte = document.getElementById('stockNorteProducto');
-      const stockCentro = document.getElementById('stockCentroProducto');
-
-      const modalMasInfo = document.getElementById('masInfo');
-      modalMasInfo.addEventListener('hidden.bs.modal', function (event) {
-        // Función que se ejecutará cada vez que se cierre el modal
-        stockWeb.innerHTML = '';
-        stockCentral.innerHTML = '';
-        stockNorte.innerHTML = '';
-        stockCentro.innerHTML = '';
-
-        // Aquí puedes agregar la lógica adicional que necesites
-      });
-
-
-
-
-            const col = document.createElement('div');
-            col.classList.add('col-lg-4', 'col-md-6');
-            
-            const item = document.createElement('div');
-            item.classList.add('item');
-            
-            const link = document.createElement('a');
-            link.href = "#"; 
-            link.setAttribute('data-bs-toggle', 'modal');
-            link.setAttribute('data-bs-target', '#masInfo');
-            link.addEventListener('click', () => {
-              stockWeb.innerHTML = 'Stock Web: ' + product.Cantidad;
-              stockCentral.innerHTML = 'Stock Sucursal Central: ' + product.Stock_Central;
-              stockNorte.innerHTML = 'Stock Sucursal Norte: ' + product.Stock_Norte;
-              stockCentro.innerHTML = 'Stock Sucursal Centro: ' + product.Stock_Centro;
-            });
-            const img = document.createElement('img');
-              if (product.Img) {
-                img.src = `data:image/jpeg;base64,${product.Img}`;
-              } else {
-                img.src = '/assets/img/taladro2.jpg'; // Imagen estática en caso de no tener imagen en el producto
-              }
-              img.alt = "";
-              link.appendChild(img);
-            
-            const category = document.createElement('span');
-            category.classList.add('category');
-            category.textContent = product.Tipo; 
-            
-            const price = document.createElement('h6');
-             const priceDolar = document.createElement('p');
-            priceDolar.classList.add('precioDolar')
-            price.textContent = `$${product.Precio}`; 
-            priceDolar.textContent = ` $${Number((product.Precio/product.CMF.Dolar).toFixed(2))} USD`;
-            const title = document.createElement('h4');
-            const titleLink = document.createElement('a');
-            titleLink.textContent = product.Nombre; 
-            title.appendChild(titleLink);
-            
-            const ul = document.createElement('ul');
-            
-            const liRooms = document.createElement('li');
-            liRooms.textContent = `Stock Web: ${product.Cantidad}`; 
-            ul.appendChild(liRooms);
-            
-            const liBathrooms = document.createElement('li');
-            liBathrooms.textContent = `Color: ${product.Color}`; 
-            ul.appendChild(liBathrooms);
-            
-            const liArea = document.createElement('li');
-            liArea.textContent = `Modelo: ${product.Modelo}`;
-            ul.appendChild(liArea);
-            
-            const liFloors = document.createElement('li');
-            liFloors.textContent = `Garantía: ${product.Garantia} Meses`; 
-            ul.appendChild(liFloors);
-            
-            const liParking = document.createElement('li');
-            liParking.textContent = `Peso: ${product.Peso} KG`; 
-            ul.appendChild(liParking);
-            
-            const mainButton = document.createElement('div');
-            mainButton.classList.add('main-button');
-            const buttonLink = document.createElement('a');
-            buttonLink.href = "#";
-            buttonLink.textContent = "Agregar a tu carrito";
-            let enviar =JSON.stringify(product)
-            buttonLink.setAttribute('onclick',`agregarAlCarrito(${enviar})`);
-            mainButton.appendChild(buttonLink);
-
-            let parrafoDebajoButton = document.createElement('p');
-            parrafoDebajoButton.classList.add('parrafoDebajo')
-            parrafoDebajoButton.textContent='Click en la imagen para mas información sobre el stock disponible.'
-
-            
-        
-            item.appendChild(link);
-            item.appendChild(category);
-            item.appendChild(price);
-            item.appendChild(priceDolar);
-            item.appendChild(title);
-            item.appendChild(ul);
-            item.appendChild(mainButton);
-            item.appendChild(parrafoDebajoButton);
-            col.appendChild(item);
-            row.appendChild(col);
-            productContainer.appendChild(row);
-          });
+                    let parrafoDebajoButton = document.createElement('p');
+                    parrafoDebajoButton.classList.add('parrafoDebajo')
+                    parrafoDebajoButton.textContent='Click en la imagen para mas información sobre el stock disponible.'
+                    
+                    item.appendChild(link);
+                    item.appendChild(category);
+                    item.appendChild(price);
+                    item.appendChild(title);
+                    item.appendChild(ul);
+                    item.appendChild(mainButton);
+                    item.appendChild(parrafoDebajoButton);
+                    col.appendChild(item);
+                    row.appendChild(col);
+                });
 
             } catch (err) {
                 console.log(err);

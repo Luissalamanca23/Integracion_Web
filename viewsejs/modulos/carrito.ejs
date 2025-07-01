@@ -30,32 +30,84 @@ function vaciarCarrito(){
 function agregarAlCarrito(element) {
   event.preventDefault();
   
-  let itemExistente = carrito.find(item => item.Nombre === element.Nombre); //Esto funciona ya que find busca en el objeto y si existe lo que busca devuelve el objeto
+  // Verificar autenticación antes de agregar al carrito
+  fetch('/api/check-auth')
+    .then(response => response.json())
+    .then(data => {
+      if (!data.isAuthenticated) {
+        if (confirm('Para una mejor experiencia y poder realizar compras, te recomendamos iniciar sesión.\n\n¿Deseas iniciar sesión ahora?\n\n(Puedes seguir navegando sin iniciar sesión, pero necesitarás hacerlo para comprar)')) {
+          window.location.href = '/login';
+          return;
+        }
+      }
+      
+      // Proceder con agregar al carrito
+      let itemExistente = carrito.find(item => item.Nombre === element.Nombre);
 
-  if (itemExistente) {
-   
+      if (itemExistente) {
+        itemExistente.Peso += 1;
+        if(itemExistente.Peso > itemExistente.Cantidad){
+          alert('Cantidad deseada supera stock de tienda.')
+          return;
+        }else{
+          if (data.isAuthenticated) {
+            alert(`¡Producto agregado a tu carrito, ${data.user.username}!`);
+          } else {
+            alert('Producto agregado a tu carrito.');
+          }
+          actualizarCarritoModal(); 
+          return;
+        }
+      } else {
+        element.Peso = 1;
+        carrito.push(element);
+        actualizarCarritoModal();
+        if (data.isAuthenticated) {
+          alert(`¡Producto agregado a tu carrito, ${data.user.username}!`);
+        } else {
+          alert('Producto agregado a tu carrito.');
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Error verificando autenticación:', error);
+      // Si hay error en la verificación, continuar normalmente
+      let itemExistente = carrito.find(item => item.Nombre === element.Nombre);
 
-    itemExistente.Peso += 1;
-    if(itemExistente.Peso > itemExistente.Cantidad){
-      alert('Cantidad deseada supera stock de tienda.')
-      return;
-    }else{
-      alert('Producto agregado a su carrito.')
-      actualizarCarritoModal(); 
-      return;
-    }
-    
-  } else {
-    
-    element.Peso = 1;
-    carrito.push(element);
-    actualizarCarritoModal();
-    alert('Producto agregado a su carrito.')
-  }
+      if (itemExistente) {
+        itemExistente.Peso += 1;
+        if(itemExistente.Peso > itemExistente.Cantidad){
+          alert('Cantidad deseada supera stock de tienda.')
+          return;
+        }else{
+          alert('Producto agregado a tu carrito.')
+          actualizarCarritoModal(); 
+          return;
+        }
+      } else {
+        element.Peso = 1;
+        carrito.push(element);
+        actualizarCarritoModal();
+        alert('Producto agregado a tu carrito.')
+      }
+    });
 }
 
 
 function pagar() {
+  // Verificar primero si el usuario está autenticado
+  fetch('/api/check-auth')
+    .then(response => response.json())
+    .then(data => {
+      if (!data.isAuthenticated) {
+        // Crear un modal de confirmación más amigable
+        if (confirm('Para realizar compras necesitas iniciar sesión.\n\n¿Deseas ir a la página de login ahora?\n\n(También puedes registrarte si no tienes cuenta)')) {
+          window.location.href = '/login';
+        }
+        return;
+      }
+      
+      // Si está autenticado, proceder con el pago
       let total = 0;
       localStorage.setItem('carrito', JSON.stringify(carrito));
 
@@ -67,13 +119,21 @@ function pagar() {
         const extraCharge = 3500;
         const totalWithExtra = total + extraCharge;
 
-        window.location.href = `/pagarwebpay?total=${totalWithExtra}`;
+        // Mostrar mensaje de confirmación con información del usuario
+        if (confirm(`¡Hola ${data.user.username}!\n\nEstás a punto de realizar una compra por $${totalWithExtra.toLocaleString('es-CL')} CLP.\n\n¿Deseas proceder al pago?`)) {
+          window.location.href = `/pagarwebpay?total=${totalWithExtra}`;
+        }
         return true;
       } else {
         alert('Debes agregar productos en tu carrito.');
         return false;
       }
-    }
+    })
+    .catch(error => {
+      console.error('Error al verificar autenticación:', error);
+      alert('Error al verificar el estado de autenticación. Por favor, intente nuevamente.');
+    });
+}
 
 function actualizarCarritoModal() {
   let contenidoModal = document.getElementById('carritoModalContent');

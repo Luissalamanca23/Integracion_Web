@@ -15,19 +15,6 @@ function openCartModal() {
       }
     }
 
-async function obtenerCMF() {
-  try {
-      const response = await fetch('/api/obtenerCMF');
-      const mensaje = await response.json();
-      console.log(mensaje);
-      var texto="-                Dolar: $"+mensaje.Dolar+" CLP      -           Euro: $"+mensaje.EUR+" CLP          -         UF: $"+mensaje.UF+" CLP";
-      console.log(texto);
-      document.getElementById("barraQueSeMueve").innerHTML=texto;
-  }catch (e){
-    console.log(e);
-  }
-}
-
 async function obtenerClima() {
   try {
       const response = await fetch('/api/obtenerClima');
@@ -39,7 +26,6 @@ async function obtenerClima() {
   }
 }
 
-obtenerCMF();
 obtenerClima();
 
 
