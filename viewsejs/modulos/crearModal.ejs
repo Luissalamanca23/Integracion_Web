@@ -41,7 +41,7 @@
         <div class="modal-body" id="crearModalContent">
           <div class="mb-3">
             <label for="nombreInput" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombreInput" name="Nombre">
+            <input type="text" class="form-control" id="nombreInput" name="Nombre" required>
           </div>
           
           <div class="mb-3">
@@ -49,50 +49,56 @@
               <select class="form-select" id="tipoInput" name="tipoInput" required>
                 <option value="" disabled selected>Seleccione una opción</option>
                 <% tipos.forEach(function(result) { %>
-                    <option value="<%= result.ID %>"><%= result.Tipo %></option>
+                    <option value="<%= result.ID %>"><%= result.Nombre %></option>
                 <% }); %>
             </select>
-              
-            </select>          
           </div>
           <div class="mb-3">
             <label for="precioInput" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="precioInput" name="Precio">
+            <input type="number" step="0.01" class="form-control" id="precioInput" name="Precio" required>
+          </div>
+          <div class="mb-3">
+            <label for="monedaInput" class="form-label">Moneda</label>
+            <select class="form-select" id="monedaInput" name="Moneda" required>
+              <option value="CLP" selected>Pesos Chilenos (CLP)</option>
+              <option value="USD">Dólares Estadounidenses (USD)</option>
+              <option value="EUR">Euros (EUR)</option>
+            </select>
           </div>
           <div class="mb-3">
             <label for="cantidadInput" class="form-label">Cantidad (Stock Web)</label>
-            <input type="number" class="form-control" id="cantidadInput" name="Cantidad">
+            <input type="number" class="form-control" id="cantidadInput" name="Cantidad" required>
           </div>
           <div class="mb-3">
-            <label for="cantidadCentralInput" class="form-label">Cantidad (Stock Sucursal Central)</label>
-            <input type="number" class="form-control" id="cantidadCentralInput" name="CantidadCentral">
+            <label for="cantidadCentralInput" class="form-label">Stock Central</label>
+            <input type="number" class="form-control" id="cantidadCentralInput" name="CantidadCentral" required>
           </div>
           <div class="mb-3">
-            <label for="cantidadNorteInput" class="form-label">Cantidad (Stock Sucursal Norte)</label>
-            <input type="number" class="form-control" id="cantidadNorteInput" name="CantidadNorte">
+            <label for="cantidadNorteInput" class="form-label">Stock Norte</label>
+            <input type="number" class="form-control" id="cantidadNorteInput" name="CantidadNorte" required>
           </div>
           <div class="mb-3">
-            <label for="cantidadCentroInput" class="form-label">Cantidad (Stock Sucursal Centro)</label>
-            <input type="number" class="form-control" id="cantidadCentroInput" name="CantidadCentro">
+            <label for="cantidadCentroInput" class="form-label">Stock Centro</label>
+            <input type="number" class="form-control" id="cantidadCentroInput" name="CantidadCentro" required>
           </div>
           <div class="mb-3">
             <label for="pesoInput" class="form-label">Peso (KG)</label>
-            <input type="number" class="form-control" id="pesoInput" name="Peso">
+            <input type="number" step="0.01" class="form-control" id="pesoInput" name="Peso" required>
           </div>
           <div class="mb-3">
             <label for="colorInput" class="form-label">Color</label>
-            <input type="text" class="form-control" id="colorInput" name="Color">
+            <input type="text" class="form-control" id="colorInput" name="Color" required>
           </div>
           <div class="mb-3">
             <label for="garantiaInput" class="form-label">Garantía (Meses)</label>
-            <input type="number" class="form-control" id="garantiaInput" name="Garantia">
+            <input type="number" class="form-control" id="garantiaInput" name="Garantia" required>
           </div>
           <div class="mb-3">
             <label for="modeloInput" class="form-label">Modelo</label>
-            <input type="text" class="form-control" id="modeloInput" name="Modelo">
+            <input type="text" class="form-control" id="modeloInput" name="Modelo" required>
           </div>
           <div class="mb-3">
-            <label for="modeloInput" class="form-label">Imagen</label>
+            <label for="fileInput" class="form-label">Imagen</label>
             <input type="file" class="form-control" accept="image/*" id="fileInput" name="Img">
           </div>
         </div>

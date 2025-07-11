@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS productos (
     Nombre VARCHAR(100) NOT NULL,
     ID_Tipo INT NOT NULL,
     Precio DECIMAL(10, 2) NOT NULL,
+    Moneda VARCHAR(3) NOT NULL DEFAULT 'CLP',
     Cantidad INT NOT NULL DEFAULT 0,
     Stock_Central INT NOT NULL DEFAULT 0,
     Stock_Norte INT NOT NULL DEFAULT 0,
@@ -74,7 +75,7 @@ CREATE TABLE IF NOT EXISTS clientes (
 
 -- Paso 8: Crear vista para mostrar productos con su tipo
 CREATE OR REPLACE VIEW productos_vista AS
-SELECT p.ID, p.Nombre, t.Nombre AS Tipo, p.Precio, p.Cantidad, 
+SELECT p.ID, p.Nombre, t.Nombre AS Tipo, p.Precio, p.Moneda, p.Cantidad, 
        p.Stock_Central, p.Stock_Norte, p.Stock_Centro, 
        p.Peso, p.Color, p.Garantia, p.Modelo, p.Img
 FROM productos p
@@ -107,25 +108,30 @@ END WHERE Estado IS NULL OR Estado = '';
 -- Paso 13: Agregar columna usuario_id a la tabla Boletas si no existe
 ALTER TABLE Boletas ADD COLUMN IF NOT EXISTS usuario_id INT;
 
--- Paso 14: Agregar foreign key constraint para usuario_id si no existe
+-- Paso 14: Agregar columna Moneda a la tabla productos si no existe
+ALTER TABLE productos ADD COLUMN IF NOT EXISTS Moneda VARCHAR(3) DEFAULT 'CLP';
+
+-- Paso 15: Actualizar productos existentes para que tengan moneda CLP por defecto
+UPDATE productos SET Moneda = 'CLP' WHERE Moneda IS NULL OR Moneda = '';
+
+-- Paso 16: Agregar foreign key constraint para usuario_id si no existe
 -- (MySQL no tiene IF NOT EXISTS para constraints, así que usaremos un procedimiento)
 DELIMITER $$
 CREATE PROCEDURE AddUserIdConstraint()
 BEGIN
-    DECLARE constraintExists INT DEFAULT 0;
-    
-    SELECT COUNT(*) INTO constraintExists
-    FROM information_schema.KEY_COLUMN_USAGE
-    WHERE TABLE_SCHEMA = 'ferremax'
-    AND TABLE_NAME = 'Boletas'
-    AND CONSTRAINT_NAME = 'Boletas_ibfk_1';
-    
-    IF constraintExists = 0 THEN
-        ALTER TABLE Boletas ADD CONSTRAINT Boletas_ibfk_1 
-        FOREIGN KEY (usuario_id) REFERENCES usuario(ID) ON DELETE SET NULL;
-    END IF;
+    DECLARE CONTINUE HANDLER FOR 1061 BEGIN END;
+    ALTER TABLE Boletas ADD CONSTRAINT fk_boletas_usuario 
+    FOREIGN KEY (usuario_id) REFERENCES usuario(ID) ON DELETE SET NULL;
 END$$
 DELIMITER ;
 
 CALL AddUserIdConstraint();
-DROP PROCEDURE IF EXISTS AddUserIdConstraint;
+DROP PROCEDURE AddUserIdConstraint;
+
+-- Paso 17: Insertar algunos productos de ejemplo con diferentes monedas
+INSERT INTO productos (Nombre, ID_Tipo, Precio, Moneda, Cantidad, Stock_Central, Stock_Norte, Stock_Centro, Peso, Color, Garantia, Modelo) VALUES
+('Taladro Bosch GSB 13 RE', 1, 54990, 'CLP', 25, 10, 8, 7, 1.4, 'Azul', 24, 'GSB 13 RE'),
+('Martillo Stanley', 2, 15.99, 'USD', 50, 20, 15, 15, 0.5, 'Negro', 12, 'STHT51512'),
+('Destornillador Phillips', 2, 8500, 'CLP', 100, 40, 30, 30, 0.2, 'Rojo', 6, 'PH-001'),
+('Sierra Circular Makita', 1, 299.99, 'USD', 15, 5, 5, 5, 3.2, 'Verde', 36, 'HS7601'),
+('Alicate Universal', 2, 12000, 'CLP', 75, 25, 25, 25, 0.3, 'Negro', 12, 'AL-100');

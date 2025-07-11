@@ -1,0 +1,166 @@
+/* Estilos para la presentación de precios en múltiples monedas */
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.price-original {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.price-converted {
+  font-size: 0.9em;
+  color: #7f8c8d;
+  font-style: italic;
+  margin: 2px 0 0 0;
+  line-height: 1.1;
+}
+
+.price-usd {
+  color: #27ae60;
+}
+
+.price-clp {
+  color: #e74c3c;
+}
+
+.price-eur {
+  color: #3498db;
+}
+
+.price-uf {
+  color: #f39c12;
+}
+
+/* Estilos para el carrito */
+.cart-item-price {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cart-item-price .price-original {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.cart-item-price .price-converted {
+  font-size: 0.85em;
+}
+
+/* Estilos para el formulario de moneda */
+.currency-selector {
+  position: relative;
+}
+
+.currency-selector::before {
+  content: "💱";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.currency-selector select {
+  padding-left: 35px;
+}
+
+/* Indicador de conversión */
+.conversion-indicator {
+  font-size: 0.8em;
+  color: #95a5a6;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.conversion-indicator::before {
+  content: "🔄";
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .price-container {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .price-original {
+    font-size: 1.1em;
+  }
+  
+  .price-converted {
+    font-size: 0.85em;
+  }
+}
+
+/* Animación para cambios de precio */
+.price-container.updating {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.price-container.updated {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Estilos para el navbar con tasas de cambio */
+.exchange-rates {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.9em;
+}
+
+.exchange-rate-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.exchange-rate-item .currency-symbol {
+  font-size: 1.1em;
+}
+
+.exchange-rate-item .rate-value {
+  font-weight: 600;
+}
+
+/* Tooltip para explicar las conversiones */
+.price-tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.price-tooltip::after {
+  content: "Precio convertido usando tasas de cambio actuales";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2c3e50;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+.price-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+} 

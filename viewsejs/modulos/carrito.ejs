@@ -113,7 +113,15 @@ function pagar() {
 
       if (carrito.length > 0) {
         carrito.forEach(element => {
-          total += element.Precio * element.Peso;
+          // Usar el precio original para el cálculo
+          let precioParaCalculo = element.PrecioOriginal || element.Precio;
+          
+          // Si el producto no está en CLP, convertir a CLP para el pago
+          if (element.MonedaOriginal && element.MonedaOriginal !== 'CLP' && element.PrecioCLP) {
+            precioParaCalculo = element.PrecioCLP;
+          }
+          
+          total += precioParaCalculo * element.Peso;
         });
 
         const extraCharge = 3500;
@@ -156,14 +164,36 @@ function actualizarCarritoModal() {
     let nombreItem = document.createElement('h6');
     nombreItem.textContent = item.Nombre;
 
+    // Mostrar precio en moneda original
     let precioItem = document.createElement('p');
-    precioItem.textContent = 'Precio: ' + item.Precio;
+    let precioTexto = 'Precio: ';
+    if (item.PrecioFormateado) {
+      precioTexto += item.PrecioFormateado;
+    } else {
+      precioTexto += `$${item.Precio}`;
+    }
+    precioItem.textContent = precioTexto;
+
+    // Mostrar precio convertido si existe
+    let precioConvertido = document.createElement('p');
+    precioConvertido.style.fontSize = '0.9em';
+    precioConvertido.style.color = '#7f8c8d';
+    precioConvertido.style.fontStyle = 'italic';
+    
+    if (item.MonedaOriginal !== 'USD' && item.PrecioUSDFormateado) {
+      precioConvertido.textContent = `≈ ${item.PrecioUSDFormateado}`;
+    } else if (item.MonedaOriginal !== 'CLP' && item.PrecioCLPFormateado) {
+      precioConvertido.textContent = `≈ ${item.PrecioCLPFormateado}`;
+    }
 
     let cantidadItem = document.createElement('p');
     cantidadItem.textContent = 'Cantidad: ' + item.Peso;
 
     divDetails.appendChild(nombreItem);
     divDetails.appendChild(precioItem);
+    if (precioConvertido.textContent) {
+      divDetails.appendChild(precioConvertido);
+    }
     divDetails.appendChild(cantidadItem);
 
     divItem.appendChild(img);

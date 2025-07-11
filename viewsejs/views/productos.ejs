@@ -89,8 +89,32 @@ async function obtenerProductos (url='/api/productos') {
             category.classList.add('category');
             category.textContent = product.Tipo; 
             
+            // Crear contenedor de precios
+            const priceContainer = document.createElement('div');
+            priceContainer.classList.add('price-container');
+            
+            // Precio original
             const price = document.createElement('h6');
-            price.textContent = `$${product.Precio}`; 
+            price.classList.add('price-original');
+            price.textContent = product.PrecioFormateado || `$${product.Precio}`;
+            
+            // Precio convertido (si existe)
+            const convertedPrice = document.createElement('p');
+            convertedPrice.classList.add('price-converted', 'price-tooltip');
+            
+            if (product.MonedaOriginal !== 'USD' && product.PrecioUSDFormateado) {
+              convertedPrice.textContent = `≈ ${product.PrecioUSDFormateado}`;
+              convertedPrice.classList.add('price-usd');
+            } else if (product.MonedaOriginal !== 'CLP' && product.PrecioCLPFormateado) {
+              convertedPrice.textContent = `≈ ${product.PrecioCLPFormateado}`;
+              convertedPrice.classList.add('price-clp');
+            }
+            
+            priceContainer.appendChild(price);
+            if (convertedPrice.textContent) {
+              priceContainer.appendChild(convertedPrice);
+            }
+            
             const title = document.createElement('h4');
             const titleLink = document.createElement('a');
             titleLink.href = "property-details.html"; 
@@ -131,13 +155,12 @@ async function obtenerProductos (url='/api/productos') {
         
             item.appendChild(link);
             item.appendChild(category);
-            item.appendChild(price);
+            item.appendChild(priceContainer);
             item.appendChild(title);
             item.appendChild(ul);
             item.appendChild(mainButton);
             col.appendChild(item);
             row.appendChild(col);
-            productContainer.appendChild(row);
           });
 
             } catch (err) {

@@ -1,0 +1,366 @@
+/* 
+---------------------------------------------
+Product Cards - Diseño Mejorado
+--------------------------------------------- 
+*/
+
+.properties .item {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.properties .item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-color: #f35525;
+}
+
+.properties .item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f35525, #ff6b35);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.properties .item:hover::before {
+  opacity: 1;
+}
+
+.properties .item img {
+  border-radius: 12px;
+  max-width: 100%;
+  max-height: 200px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.properties .item:hover img {
+  transform: scale(1.05);
+}
+
+.properties .item span.category {
+  background: linear-gradient(135deg, #f35525, #ff6b35);
+  color: white;
+  font-weight: 600;
+  border-radius: 20px;
+  font-size: 12px;
+  padding: 6px 16px;
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(243, 85, 37, 0.3);
+}
+
+.properties .item h4 {
+  font-size: 18px;
+  margin: 15px 0;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #2c3e50;
+  height: 75px; /* Altura fija para el título */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.properties .item h4 a {
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.properties .item h4 a:hover {
+  color: #f35525;
+}
+
+.properties .item ul {
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.properties .item ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.properties .item ul li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.properties .item ul li span {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Contenedor de precios mejorado */
+.properties .item .price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 15px 0;
+  padding: 12px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 10px;
+  border-left: 4px solid #f35525;
+}
+
+.properties .item .price-container h6,
+.properties .item .price-container .price-original {
+  font-size: 22px;
+  color: #f35525;
+  margin: 0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.properties .item .price-container .price-converted {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin: 2px 0 0 0;
+  font-style: italic;
+}
+
+.properties .item h6 {
+  font-size: 22px;
+  color: #f35525;
+  margin: 0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.properties .item .main-button {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.properties .item .main-button a {
+  background: linear-gradient(135deg, #f35525, #ff6b35);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(243, 85, 37, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.properties .item .main-button a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.properties .item .main-button a:hover::before {
+  left: 100%;
+}
+
+.properties .item .main-button a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(243, 85, 37, 0.4);
+}
+
+/* Estilos para el párrafo debajo del botón */
+.properties .item .parrafoDebajo {
+  font-size: 12px;
+  color: #95a5a6;
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* Responsive design para las cartas */
+@media (max-width: 768px) {
+  .properties .item {
+    max-width: 100%;
+    margin: 0 auto 20px;
+  }
+  
+  .properties .item h4 {
+    font-size: 16px;
+    min-height: auto;
+  }
+  
+  .properties .item .price-container h6,
+  .properties .item .price-container .price-original {
+    font-size: 20px;
+  }
+  
+  .properties .item ul li {
+    font-size: 13px;
+  }
+}
+
+/* Animación de carga para las cartas */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.properties .item {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Efecto de brillo en hover */
+.properties .item:hover {
+  position: relative;
+}
+
+.properties .item:hover::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #f35525, #ff6b35, #f35525);
+  border-radius: 17px;
+  z-index: -1;
+  opacity: 0.3;
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Indicador de stock */
+.properties .item .stock-indicator {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.properties .item .stock-indicator.low-stock {
+  background: #e74c3c;
+}
+
+.properties .item .stock-indicator.medium-stock {
+  background: #f39c12;
+}
+
+.properties .item .stock-indicator.high-stock {
+  background: #27ae60;
+}
+
+/* Mejoras adicionales */
+.properties .item .category-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+}
+
+.properties .item .price-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(243, 85, 37, 0.9);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 2;
+}
+
+/* Hover effects mejorados */
+.properties .item:hover .category-badge {
+  transform: scale(1.1);
+}
+
+.properties .item:hover .price-badge {
+  background: rgba(243, 85, 37, 1);
+  transform: scale(1.05);
+}
+
+/* Estilos para información adicional */
+.properties .item .product-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.properties .item .product-rating {
+  display: flex;
+  align-items: center;
+  color: #f39c12;
+  font-size: 14px;
+}
+
+.properties .item .product-rating i {
+  margin-right: 2px;
+}
+
+.properties .item .product-warranty {
+  font-size: 12px;
+  color: #7f8c8d;
+  background: #ecf0f1;
+  padding: 2px 8px;
+  border-radius: 10px;
+} 

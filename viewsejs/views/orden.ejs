@@ -136,17 +136,44 @@
         let cantidadDetalles = document.createElement('p');
         cantidadDetalles.textContent = 'Cantidad: ' + element.Peso;
 
+        // Mostrar precio en moneda original
         let precioDetalles = document.createElement('p');
-        precioDetalles.textContent = 'C/U: ' + element.Precio;
+        let precioTexto = 'C/U: ';
+        if (element.PrecioFormateado) {
+          precioTexto += element.PrecioFormateado;
+        } else {
+          precioTexto += element.Precio;
+        }
+        precioDetalles.textContent = precioTexto;
+
+        // Mostrar precio convertido si existe
+        let precioConvertido = document.createElement('p');
+        precioConvertido.style.fontSize = '0.9em';
+        precioConvertido.style.color = '#7f8c8d';
+        precioConvertido.style.fontStyle = 'italic';
+        
+        if (element.MonedaOriginal !== 'USD' && element.PrecioUSDFormateado) {
+          precioConvertido.textContent = `≈ ${element.PrecioUSDFormateado}`;
+        } else if (element.MonedaOriginal !== 'CLP' && element.PrecioCLPFormateado) {
+          precioConvertido.textContent = `≈ ${element.PrecioCLPFormateado}`;
+        }
 
         let precioTotalDetalles = document.createElement('p');
-        precioTotalDetalles.textContent = 'Total: ' + (element.Precio * element.Peso);
+        // Calcular el precio total usando el precio adecuado para CLP
+        let precioParaCalculo = element.PrecioOriginal || element.Precio;
+        if (element.MonedaOriginal && element.MonedaOriginal !== 'CLP' && element.PrecioCLP) {
+          precioParaCalculo = element.PrecioCLP;
+        }
+        precioTotalDetalles.textContent = 'Total: $' + (precioParaCalculo * element.Peso).toLocaleString('es-CL');
 
-        totaldd += element.Precio * element.Peso; 
+        totaldd += precioParaCalculo * element.Peso;
 
         divDetalles.appendChild(tituloDetalles);
         divDetalles.appendChild(cantidadDetalles);
         divDetalles.appendChild(precioDetalles);
+        if (precioConvertido.textContent) {
+          divDetalles.appendChild(precioConvertido);
+        }
         divDetalles.appendChild(precioTotalDetalles);
 
         divItem.appendChild(imgItem);
@@ -156,11 +183,11 @@
       });
 
       total= totaldd
-      document.getElementById('total').innerText = '$' + total; 
+      document.getElementById('total').innerText = '$' + total.toLocaleString('es-CL'); 
 
       const extraCharge = 3500;
       const totalWithExtra = total + extraCharge;
-      document.getElementById('totalExtra').innerText = '$' + totalWithExtra; 
+      document.getElementById('totalExtra').innerText = '$' + totalWithExtra.toLocaleString('es-CL'); 
       
    
 

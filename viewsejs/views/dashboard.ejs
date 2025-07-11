@@ -7,70 +7,108 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="css/dashboard.css">
-
+  <link rel="stylesheet" href="css/dashboard-cards.css">
 
   <%- include('../modulos/head.ejs'); %>
-
-
 
 </head>
 
 <body>
 
+  <div class="dashboard">
+    <div class="left-side-bar">
+      <div class="menu">
+        <ul>
+          <li class="active">
+            <i class="fa fa-edit"></i>
+            <span>Productos</span>
+          </li>
+         
+          <li>
+            <i class="fa fa-edit"></i>
+            <span><a href="/bodeguero">Bodeguero</a></span>
+          </li>
+          <li>
+            <i class="fa fa-edit"></i>
+            <span><a href="/logout">Cerrar Sesión</a></span>
+          </li>
 
-  <body>
-    <div class="dashboard">
-      <div class="left-side-bar">
-        <div class="menu">
-          <ul>
-            <li class="active">
-              <i class="fa fa-edit"></i>
-              <span>Productos</span>
-            </li>
-           
-            <li>
-              <i class="fa fa-edit"></i>
-              <span><a href="/bodeguero">Bodeguero</a></span>
-            </li>
-            <li>
-              <i class="fa fa-edit"></i>
-              <span><a href="/logout">Cerrar Sesión</a></span>
-            </li>
-
-          </ul>
-        </div>
-      </div>
-      <div class="main-container">
-
-        <div class="main-view">
-          <div class="properties">
-            <div class="container" id="product-container">
-            </div>
-          </div>
-        </div>
-
-        <button class="floating-btn" data-bs-toggle="modal" data-bs-target="#crearModal">
-          <span class="text-floating">+</span>
-        </button>
+        </ul>
       </div>
     </div>
+    <div class="main-container dashboard-container">
+      
+      <!-- Nueva barra de herramientas elegante -->
+      <div class="admin-toolbar">
+        <div class="toolbar-section">
+          <h2 class="toolbar-title">
+            <i class="fas fa-boxes"></i>
+            Gestión de Productos
+          </h2>
+        </div>
+        
+        <div class="toolbar-actions">
+          <button class="toolbar-btn primary" data-bs-toggle="modal" data-bs-target="#crearModal">
+            <i class="fas fa-plus"></i>
+            Agregar Producto
+          </button>
+          
+          <div class="toolbar-filters">
+            <select class="filter-select" id="filterByType" onchange="filtrarPorTipo(this.value)">
+              <option value="">Todos los tipos</option>
+              <option value="Herramientas Eléctricas">Herramientas Eléctricas</option>
+              <option value="Herramientas Manuales">Herramientas Manuales</option>
+              <option value="Materiales de Construcción">Materiales de Construcción</option>
+              <option value="Ferretería">Ferretería</option>
+              <option value="Pinturas">Pinturas</option>
+              <option value="Plomería">Plomería</option>
+              <option value="Electricidad">Electricidad</option>
+              <option value="Jardinería">Jardinería</option>
+            </select>
+            
+            <select class="filter-select" id="filterByStock" onchange="filtrarPorStock(this.value)">
+              <option value="">Todos los stocks</option>
+              <option value="bajo">Stock Bajo (≤5)</option>
+              <option value="medio">Stock Medio (6-20)</option>
+              <option value="alto">Stock Alto (>20)</option>
+            </select>
+          </div>
+          
+          <div class="toolbar-search">
+            <input type="text" class="search-input" id="searchProducts" placeholder="Buscar productos..." onkeyup="buscarProductos(this.value)">
+            <i class="fas fa-search search-icon"></i>
+          </div>
+          
+          <button class="toolbar-btn secondary" onclick="location.reload()">
+            <i class="fas fa-sync-alt"></i>
+            Actualizar
+          </button>
+        </div>
+      </div>
 
-
-  </body>
+      <div class="main-view">
+        <div class="properties">
+          <div class="container" id="product-container">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <%- include('../modulos/crearModal.ejs');%>
 
-
-
-    <%- include('../modulos/scripts.ejs');%>
+  <%- include('../modulos/scripts.ejs');%>
 
       <script>
 
         let tiposCacheados = [];
+        let todosLosProductos = [];
+        
         async function fetchTiposProductos() {
           try {
             const response = await fetch('/api/tipos/');
             tiposCacheados = await response.json();
+            console.log('Tipos cacheados:', tiposCacheados);
           } catch (err) {
             console.error('Error al obtener los tipos de productos:', err);
           }
@@ -78,9 +116,180 @@
 
         fetchTiposProductos();
 
-       
+        // Funciones de filtrado
+        function filtrarPorTipo(tipo) {
+          if (tipo === '') {
+            mostrarProductos(todosLosProductos);
+          } else {
+            const productosFiltrados = todosLosProductos.filter(product => product.Tipo === tipo);
+            mostrarProductos(productosFiltrados);
+          }
+        }
 
-        
+        function filtrarPorStock(nivel) {
+          let productosFiltrados;
+          switch(nivel) {
+            case 'bajo':
+              productosFiltrados = todosLosProductos.filter(product => product.Cantidad <= 5);
+              break;
+            case 'medio':
+              productosFiltrados = todosLosProductos.filter(product => product.Cantidad > 5 && product.Cantidad <= 20);
+              break;
+            case 'alto':
+              productosFiltrados = todosLosProductos.filter(product => product.Cantidad > 20);
+              break;
+            default:
+              productosFiltrados = todosLosProductos;
+          }
+          mostrarProductos(productosFiltrados);
+        }
+
+        function buscarProductos(termino) {
+          if (termino === '') {
+            mostrarProductos(todosLosProductos);
+          } else {
+            const productosFiltrados = todosLosProductos.filter(product => 
+              product.Nombre.toLowerCase().includes(termino.toLowerCase()) ||
+              product.Tipo.toLowerCase().includes(termino.toLowerCase()) ||
+              (product.Modelo || '').toLowerCase().includes(termino.toLowerCase())
+            );
+            mostrarProductos(productosFiltrados);
+          }
+        }
+
+        function mostrarProductos(productos) {
+          console.log("Iniciando la función mostrarProductos. Número de productos recibidos:", productos ? productos.length : 0);
+          const productContainer = document.getElementById('product-container');
+          
+          if (!productContainer) {
+            console.error("Error crítico: El contenedor de productos #product-container no se encontró en el DOM.");
+            return;
+          }
+
+          productContainer.innerHTML = '';
+          productContainer.classList.add('properties-box');
+
+          if (!productos || productos.length === 0) {
+            console.warn("No se proporcionaron productos para mostrar o la lista está vacía.");
+            productContainer.innerHTML = '<h4 style="text-align: center; color: #6c757d; grid-column: 1 / -1;">No se encontraron productos que coincidan con los filtros.</h4>';
+            return;
+          }
+
+          productos.forEach((product, index) => {
+            try {
+              const item = document.createElement('div');
+              item.classList.add('item');
+
+              const link = document.createElement('a');
+              link.href = "#";
+              const img = document.createElement('img');
+              if (product.Img) {
+                img.src = `data:image/jpeg;base64,${product.Img}`;
+              } else {
+                img.src = '/assets/img/taladro2.jpg';
+              }
+              img.alt = "";
+              link.appendChild(img);
+
+              const category = document.createElement('span');
+              category.classList.add('category');
+              category.textContent = product.Tipo;
+
+              const priceContainer = document.createElement('div');
+              priceContainer.classList.add('price-container');
+
+              const price = document.createElement('h6');
+              price.classList.add('price-original');
+              price.textContent = product.PrecioFormateado || `$${product.Precio}`;
+
+              const convertedPrice = document.createElement('p');
+              convertedPrice.classList.add('price-converted', 'price-tooltip');
+
+              if (product.MonedaOriginal !== 'USD' && product.PrecioUSDFormateado) {
+                convertedPrice.textContent = `≈ ${product.PrecioUSDFormateado}`;
+                convertedPrice.classList.add('price-usd');
+              } else if (product.MonedaOriginal !== 'CLP' && product.PrecioCLPFormateado) {
+                convertedPrice.textContent = `≈ ${product.PrecioCLPFormateado}`;
+                convertedPrice.classList.add('price-clp');
+              }
+
+              priceContainer.appendChild(price);
+              if (convertedPrice.textContent) {
+                priceContainer.appendChild(convertedPrice);
+              }
+
+              const title = document.createElement('h4');
+              const titleLink = document.createElement('a');
+              titleLink.href = "#";
+              titleLink.textContent = product.Nombre;
+              title.appendChild(titleLink);
+
+              const ul = document.createElement('ul');
+
+              const liRooms = document.createElement('li');
+              liRooms.innerHTML = `Stock: <span>${product.Cantidad}</span>`;
+              ul.appendChild(liRooms);
+
+              const liBathrooms = document.createElement('li');
+              liBathrooms.innerHTML = `Color: <span>${product.Color}</span>`;
+              ul.appendChild(liBathrooms);
+
+              const liArea = document.createElement('li');
+              liArea.innerHTML = `Stock Central: <span>${product.Stock_Central}</span>`;
+              ul.appendChild(liArea);
+
+              const liFloors = document.createElement('li');
+              liFloors.innerHTML = `Stock Norte: <span>${product.Stock_Norte}</span>`;
+              ul.appendChild(liFloors);
+
+              const liParking = document.createElement('li');
+              liParking.innerHTML = `Stock Centro: <span>${product.Stock_Centro}</span>`;
+              ul.appendChild(liParking);
+
+              const liGarantia = document.createElement('li');
+              liGarantia.innerHTML = `Garantía: <span>${product.Garantia} Meses</span>`;
+              ul.appendChild(liGarantia);
+
+              const liPeso = document.createElement('li');
+              liPeso.innerHTML = `Peso: <span>${product.Peso} KG</span>`;
+              ul.appendChild(liPeso);
+
+              const mainButton = document.createElement('div');
+              mainButton.classList.add('main-button');
+              const buttonLink = document.createElement('a');
+              buttonLink.href = "#";
+              buttonLink.textContent = "Editar";
+
+              let datos = JSON.stringify(product);
+              buttonLink.setAttribute('onclick', `editarModal(${datos})`);
+              mainButton.appendChild(buttonLink);
+
+              const stockIndicator = document.createElement('div');
+              stockIndicator.classList.add('stock-indicator');
+              if (product.Cantidad <= 5) {
+                stockIndicator.classList.add('low-stock');
+                stockIndicator.textContent = 'Stock Bajo';
+              } else if (product.Cantidad <= 20) {
+                stockIndicator.classList.add('medium-stock');
+                stockIndicator.textContent = 'Stock Medio';
+              } else {
+                stockIndicator.classList.add('high-stock');
+                stockIndicator.textContent = 'Stock Alto';
+              }
+
+              item.appendChild(link);
+              item.appendChild(stockIndicator);
+              item.appendChild(category);
+              item.appendChild(priceContainer);
+              item.appendChild(title);
+              item.appendChild(ul);
+              item.appendChild(mainButton);
+              productContainer.appendChild(item);
+            } catch (e) {
+              console.error("Error al renderizar el producto:", product, e);
+            }
+          });
+        }
 
         document.getElementById('crearForm').addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -94,7 +303,7 @@
           const result = await response.json();
           if (response.ok) {
             alert(result.message);
-            window.location.reload(); // Recargar la página
+            window.location.reload();
           } else {
             alert('Error al crear el producto: ' + result.error);
           }
@@ -104,111 +313,22 @@
         }
       });
 
-         
-
         async function obtenerProductos(url = '/api/productos') {
           try {
             const response = await fetch(url);
             const result = await response.json();
-            console.log(result);
-            const productContainer = document.getElementById('product-container');
-
-
-
-            productContainer.innerHTML = '';
-
-            let row;
-
-
-            result.forEach((product, index) => {
-              if (index % 3 === 0) {
-                row = document.createElement('div');
-                row.classList.add('row');
-                productContainer.appendChild(row);
-              }
-
-
-              const col = document.createElement('div');
-              col.classList.add('col-lg-4', 'col-md-6');
-
-              const item = document.createElement('div');
-              item.classList.add('item');
-
-              const link = document.createElement('a');
-              link.href = "#";
-              const img = document.createElement('img');
-              if (product.Img) {
-                img.src = `data:image/jpeg;base64,${product.Img}`;
-              } else {
-                img.src = '/assets/img/taladro2.jpg'; // Imagen estática en caso de no tener imagen en el producto
-              }
-              img.alt = "";
-              link.appendChild(img);
-
-              const category = document.createElement('span');
-              category.classList.add('category');
-              category.textContent = product.Tipo;
-
-              const price = document.createElement('h6');
-              price.textContent = `$${product.Precio}`;
-              const title = document.createElement('h4');
-              const titleLink = document.createElement('a');
-              titleLink.textContent = product.Nombre;
-              title.appendChild(titleLink);
-
-              const ul = document.createElement('ul');
-
-              const liRooms = document.createElement('li');
-              liRooms.textContent = `Stock: ${product.Cantidad}`;
-              ul.appendChild(liRooms);
-
-              const liBathrooms = document.createElement('li');
-              liBathrooms.textContent = `Color: ${product.Color}`;
-              ul.appendChild(liBathrooms);
-
-              const liArea = document.createElement('li');
-              liArea.textContent = `Modelo: ${product.Modelo}`;
-              ul.appendChild(liArea);
-
-              const liFloors = document.createElement('li');
-              liFloors.textContent = `Garantía: ${product.Garantia} Meses`;
-              ul.appendChild(liFloors);
-
-              const liParking = document.createElement('li');
-              liParking.textContent = `Peso: ${product.Peso} KG`;
-              ul.appendChild(liParking);
-
-              const mainButton = document.createElement('div');
-              mainButton.classList.add('main-button');
-              const buttonLink = document.createElement('a');
-              buttonLink.href = "#";
-              buttonLink.textContent = "Editar";
-
-              let datos = JSON.stringify(product);
-              buttonLink.setAttribute('onclick', `editarModal(${datos})`);
-              mainButton.appendChild(buttonLink);
-
-
-              item.appendChild(link);
-              item.appendChild(category);
-              item.appendChild(price);
-              item.appendChild(title);
-              item.appendChild(mainButton);
-              col.appendChild(item);
-              row.appendChild(col);
-              productContainer.appendChild(row);
-            });
-
+            console.log("Productos recibidos de la API:", result);
+            todosLosProductos = result;
+            mostrarProductos(result);
           } catch (err) {
-            console.log(err);
+            console.error('Error al obtener o procesar los productos:', err);
           }
         }
 
-
-
         function editarModal(datos) {
           let titulo = document.getElementById('modalTitulo');
-          console.log(datos)
+          console.log('Datos del producto:', datos);
+          console.log('Tipos cacheados:', tiposCacheados);
 
           $('#editarModal').modal('show');
 
@@ -240,9 +360,7 @@
 
           let eliminarBtn = document.createElement('button');
           eliminarBtn.setAttribute('type', 'button');
-
-         eliminarBtn.setAttribute('onclick', `eliminar(${datos.ID})`); 
-          
+          eliminarBtn.setAttribute('onclick', `eliminar(${datos.ID})`); 
           eliminarBtn.classList.add('btn', 'btn-danger');
           eliminarBtn.setAttribute('id', 'eliminarBtn');
           eliminarBtn.textContent = 'Eliminar';
@@ -253,25 +371,27 @@
 
           titulo.textContent = `Editar Producto: ${datos.Nombre}`;
 
+          // Campo ID oculto
+          let inputID = document.createElement('input');
+          inputID.setAttribute('type', 'hidden');
+          inputID.setAttribute('name', 'ID');
+          inputID.value = datos.ID;
+
+          // Campo Nombre
           let divNombre = document.createElement('div');
           divNombre.classList.add('mb-3');
           let labelNombre = document.createElement('label');
           labelNombre.classList.add('form-label');
           labelNombre.textContent = 'Nombre';
-          let idHidden = document.createElement('input');
-          idHidden.setAttribute('type', 'hidden');
-          idHidden.setAttribute('name', 'ID');
-
-          idHidden.value = `${datos.ID}`;
           let inputNombre = document.createElement('input');
           inputNombre.classList.add('form-control');
           inputNombre.setAttribute('type', 'text');
           inputNombre.setAttribute('name', 'Nombre');
-          inputNombre.value = `${datos.Nombre}`;
+          inputNombre.value = datos.Nombre;
           divNombre.appendChild(labelNombre);
           divNombre.appendChild(inputNombre);
-          divNombre.appendChild(idHidden);
 
+          // Campo Tipo - ARREGLADO
           let divTipo = document.createElement('div');
           divTipo.classList.add('mb-3');
           let labelTipo = document.createElement('label');
@@ -280,11 +400,20 @@
           let selectTipo = document.createElement('select');
           selectTipo.classList.add('form-control');
           selectTipo.setAttribute('name', 'ID_Tipo');
+          
+          // Buscar el ID del tipo actual basado en el nombre del tipo
+          let tipoActualID = null;
+          tiposCacheados.forEach(tipo => {
+            if (tipo.Nombre === datos.Tipo) {
+              tipoActualID = tipo.ID;
+            }
+          });
+
           tiposCacheados.forEach(tipo => {
             let option = document.createElement('option');
             option.value = tipo.ID;
-            option.textContent = tipo.Tipo;
-            if (tipo.ID === datos.Tipo) {
+            option.textContent = tipo.Nombre; // Usar 'Nombre' en lugar de 'Tipo'
+            if (tipo.ID === tipoActualID) {
               option.selected = true;
             }
             selectTipo.appendChild(option);
@@ -292,6 +421,7 @@
           divTipo.appendChild(labelTipo);
           divTipo.appendChild(selectTipo);
 
+          // Campo Precio
           let divPrecio = document.createElement('div');
           divPrecio.classList.add('mb-3');
           let labelPrecio = document.createElement('label');
@@ -300,11 +430,36 @@
           let inputPrecio = document.createElement('input');
           inputPrecio.classList.add('form-control');
           inputPrecio.setAttribute('type', 'number');
+          inputPrecio.setAttribute('step', '0.01');
           inputPrecio.setAttribute('name', 'Precio');
-          inputPrecio.value = `${datos.Precio}`;
+          inputPrecio.value = datos.Precio;
           divPrecio.appendChild(labelPrecio);
           divPrecio.appendChild(inputPrecio);
 
+          // Campo Moneda
+          let divMoneda = document.createElement('div');
+          divMoneda.classList.add('mb-3');
+          let labelMoneda = document.createElement('label');
+          labelMoneda.classList.add('form-label');
+          labelMoneda.textContent = 'Moneda';
+          let selectMoneda = document.createElement('select');
+          selectMoneda.classList.add('form-control');
+          selectMoneda.setAttribute('name', 'Moneda');
+          
+          const monedas = ['CLP', 'USD', 'EUR'];
+          monedas.forEach(moneda => {
+            let option = document.createElement('option');
+            option.value = moneda;
+            option.textContent = moneda;
+            if (moneda === (datos.Moneda || 'CLP')) {
+              option.selected = true;
+            }
+            selectMoneda.appendChild(option);
+          });
+          divMoneda.appendChild(labelMoneda);
+          divMoneda.appendChild(selectMoneda);
+
+          // Campo Cantidad (Stock Web)
           let divCantidad = document.createElement('div');
           divCantidad.classList.add('mb-3');
           let labelCantidad = document.createElement('label');
@@ -314,65 +469,68 @@
           inputCantidad.classList.add('form-control');
           inputCantidad.setAttribute('type', 'number');
           inputCantidad.setAttribute('name', 'Cantidad');
-          inputCantidad.value = `${datos.Cantidad}`;
+          inputCantidad.value = datos.Cantidad;
           divCantidad.appendChild(labelCantidad);
           divCantidad.appendChild(inputCantidad);
 
-           let divCantidadCentral = document.createElement('div');
+          // Campo Stock Central
+          let divCantidadCentral = document.createElement('div');
           divCantidadCentral.classList.add('mb-3');
           let labelCantidadCentral = document.createElement('label');
           labelCantidadCentral.classList.add('form-label');
-          labelCantidadCentral.textContent = 'Cantidad (Stock Web)';
+          labelCantidadCentral.textContent = 'Stock Central';
           let inputCantidadCentral = document.createElement('input');
           inputCantidadCentral.classList.add('form-control');
           inputCantidadCentral.setAttribute('type', 'number');
           inputCantidadCentral.setAttribute('name', 'Stock_Central');
-          inputCantidadCentral.value = `${datos.Stock_Central}`;
+          inputCantidadCentral.value = datos.Stock_Central;
           divCantidadCentral.appendChild(labelCantidadCentral);
           divCantidadCentral.appendChild(inputCantidadCentral);
 
+          // Campo Stock Norte
           let divCantidadNorte = document.createElement('div');
           divCantidadNorte.classList.add('mb-3');
           let labelCantidadNorte = document.createElement('label');
           labelCantidadNorte.classList.add('form-label');
-          labelCantidadNorte.textContent = 'Cantidad (Stock Sucursal Norte)';
+          labelCantidadNorte.textContent = 'Stock Norte';
           let inputCantidadNorte = document.createElement('input');
           inputCantidadNorte.classList.add('form-control');
           inputCantidadNorte.setAttribute('type', 'number');
-          inputCantidadNorte.setAttribute('name', 'Stock_ Norte');
-          inputCantidadNorte.value = `${datos.Stock_Norte}`;
+          inputCantidadNorte.setAttribute('name', 'Stock_Norte');
+          inputCantidadNorte.value = datos.Stock_Norte;
           divCantidadNorte.appendChild(labelCantidadNorte);
           divCantidadNorte.appendChild(inputCantidadNorte);
 
+          // Campo Stock Centro
           let divCantidadCentro = document.createElement('div');
           divCantidadCentro.classList.add('mb-3');
           let labelCantidadCentro = document.createElement('label');
           labelCantidadCentro.classList.add('form-label');
-          labelCantidadCentro.textContent = 'Cantidad (Stock Sucursal Centro)';
+          labelCantidadCentro.textContent = 'Stock Centro';
           let inputCantidadCentro = document.createElement('input');
           inputCantidadCentro.classList.add('form-control');
           inputCantidadCentro.setAttribute('type', 'number');
           inputCantidadCentro.setAttribute('name', 'Stock_Centro');
-          inputCantidadCentro.value = `${datos.Stock_Centro}`;
+          inputCantidadCentro.value = datos.Stock_Centro;
           divCantidadCentro.appendChild(labelCantidadCentro);
           divCantidadCentro.appendChild(inputCantidadCentro);
- 
 
-
-
+          // Campo Peso
           let divPeso = document.createElement('div');
           divPeso.classList.add('mb-3');
           let labelPeso = document.createElement('label');
           labelPeso.classList.add('form-label');
-          labelPeso.textContent = 'Peso';
+          labelPeso.textContent = 'Peso (KG)';
           let inputPeso = document.createElement('input');
           inputPeso.classList.add('form-control');
           inputPeso.setAttribute('type', 'number');
+          inputPeso.setAttribute('step', '0.01');
           inputPeso.setAttribute('name', 'Peso');
-          inputPeso.value = `${datos.Peso}`;
+          inputPeso.value = datos.Peso;
           divPeso.appendChild(labelPeso);
           divPeso.appendChild(inputPeso);
 
+          // Campo Color
           let divColor = document.createElement('div');
           divColor.classList.add('mb-3');
           let labelColor = document.createElement('label');
@@ -382,10 +540,11 @@
           inputColor.classList.add('form-control');
           inputColor.setAttribute('type', 'text');
           inputColor.setAttribute('name', 'Color');
-          inputColor.value = `${datos.Color}`;
+          inputColor.value = datos.Color;
           divColor.appendChild(labelColor);
           divColor.appendChild(inputColor);
 
+          // Campo Garantía
           let divGarantia = document.createElement('div');
           divGarantia.classList.add('mb-3');
           let labelGarantia = document.createElement('label');
@@ -395,10 +554,11 @@
           inputGarantia.classList.add('form-control');
           inputGarantia.setAttribute('type', 'number');
           inputGarantia.setAttribute('name', 'Garantia');
-          inputGarantia.value = `${datos.Garantia}`;
+          inputGarantia.value = datos.Garantia;
           divGarantia.appendChild(labelGarantia);
           divGarantia.appendChild(inputGarantia);
 
+          // Campo Modelo
           let divModelo = document.createElement('div');
           divModelo.classList.add('mb-3');
           let labelModelo = document.createElement('label');
@@ -408,32 +568,29 @@
           inputModelo.classList.add('form-control');
           inputModelo.setAttribute('type', 'text');
           inputModelo.setAttribute('name', 'Modelo');
-          inputModelo.value = `${datos.Modelo}`;
+          inputModelo.value = datos.Modelo;
           divModelo.appendChild(labelModelo);
           divModelo.appendChild(inputModelo);
 
+          // Campo Imagen
           let divFile = document.createElement('div');
           divFile.classList.add('mb-3');
           let labelFile = document.createElement('label');
           labelFile.classList.add('form-label');
           labelFile.textContent = 'Imagen';
-
           let inputFile = document.createElement('input');
           inputFile.classList.add('form-control');
           inputFile.setAttribute('type', 'file');
           inputFile.setAttribute('name', 'Img');
-          
           divFile.appendChild(labelFile);
           divFile.appendChild(inputFile);
 
-
-
-
-
-
+          // Agregar todos los campos al modal
+          modalContent.appendChild(inputID);
           modalContent.appendChild(divNombre);
           modalContent.appendChild(divTipo);
           modalContent.appendChild(divPrecio);
+          modalContent.appendChild(divMoneda);
           modalContent.appendChild(divCantidad);
           modalContent.appendChild(divCantidadCentral);
           modalContent.appendChild(divCantidadNorte);
@@ -448,74 +605,61 @@
           form.appendChild(modalFooter);
           principalContainer.appendChild(form);
 
-          
+          // Event listener para el formulario de edición
           document.getElementById('editarForm').addEventListener('submit', async (e) => {
-          e.preventDefault();
+            e.preventDefault();
 
-          const formData = new FormData(e.target);
+            const formData = new FormData(e.target);
 
-          try {
-            const response = await fetch('/api/actualizarProducto', {
-              method: 'POST',
-              body: formData
-            });
+            try {
+              const response = await fetch('/api/actualizarProducto', {
+                method: 'POST',
+                body: formData
+              });
 
-            const result = await response.json();
-            if (response.ok) {
-              alert(result.message);
-              $('#editarModal').modal('hide'); // Cerrar el modal si la actualización es exitosa
-              location.reload();
-            } else {
-              alert('Error al actualizar el producto: ' + result.error);
+              const result = await response.json();
+              if (response.ok) {
+                alert(result.message);
+                $('#editarModal').modal('hide');
+                location.reload();
+              } else {
+                alert('Error al actualizar el producto: ' + result.error);
+              }
+            } catch (err) {
+              console.error('Error al enviar la solicitud:', err);
+              alert('Error al enviar la solicitud');
             }
-          } catch (err) {
-            console.error('Error al enviar la solicitud:', err);
-            alert('Error al enviar la solicitud');
-          }
-        });
-
+          });
         }
-
-
-
-
-
 
         $(document).ready(async function () {
           await obtenerProductos();
         });
 
-        
-
-
         async function eliminar(ID) {
-        try {
-            const response = await fetch('/api/eliminarProducto', {
+          if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+            try {
+              const response = await fetch('/api/eliminarProducto', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                  'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ ID })
-            });
-            const result = await response.json();
-            if (response.ok) {
+              });
+              const result = await response.json();
+              if (response.ok) {
                 alert(result.message);
-                window.location.reload()
-            } else {
+                window.location.reload();
+              } else {
                 alert('Error al eliminar el producto');
+              }
+            } catch (error) {
+              console.error('Error:', error);
             }
-        } catch (error) {
-            console.error('Error AKIKI:', error);
+          }
         }
-        
-}
-
-
-
-
 
       </script>
-
 
 </body>
 

@@ -47,7 +47,7 @@
         </div>
       </div>
     
-      <div class="contact-content">
+      <div class="contact-content contact-page">
         <div class="container">
           <div class="row">
             <div class="col-lg-7">
@@ -57,13 +57,13 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="item phone">
-                    <img src="" alt="" style="max-width: 52px;">
+                    <i class="fa-solid fa-phone"></i>
                     <h6>+56 9 3362 4234<br><span>Número Teléfonico</span></h6>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="item email">
-                    <img src="" alt="" style="max-width: 52px;">
+                    <i class="fa-solid fa-envelope"></i>
                     <h6>admin@ferremax.cl<br><span>Correo de Contacto</span></h6>
                   </div>
                 </div>
@@ -210,8 +210,36 @@
                     category.classList.add('category');
                     category.textContent = product.Tipo; 
                     
+                    // Crear contenedor de precios
+                    const priceContainer = document.createElement('div');
+                    priceContainer.classList.add('price-container');
+                    priceContainer.style.marginBottom = '10px';
+                    
+                    // Precio original
                     const price = document.createElement('h6');
-                    price.textContent = `$${product.Precio}`; 
+                    price.style.margin = '0';
+                    price.style.fontSize = '1.2em';
+                    price.style.fontWeight = 'bold';
+                    price.style.color = '#2c3e50';
+                    price.textContent = product.PrecioFormateado || `$${product.Precio}`;
+                    
+                    // Precio convertido (si existe)
+                    const convertedPrice = document.createElement('p');
+                    convertedPrice.style.margin = '0';
+                    convertedPrice.style.fontSize = '0.9em';
+                    convertedPrice.style.color = '#7f8c8d';
+                    convertedPrice.style.fontStyle = 'italic';
+                    
+                    if (product.MonedaOriginal !== 'USD' && product.PrecioUSDFormateado) {
+                        convertedPrice.textContent = `≈ ${product.PrecioUSDFormateado}`;
+                    } else if (product.MonedaOriginal !== 'CLP' && product.PrecioCLPFormateado) {
+                        convertedPrice.textContent = `≈ ${product.PrecioCLPFormateado}`;
+                    }
+                    
+                    priceContainer.appendChild(price);
+                    if (convertedPrice.textContent) {
+                        priceContainer.appendChild(convertedPrice);
+                    }
                     
                     const title = document.createElement('h4');
                     const titleLink = document.createElement('a');
@@ -255,7 +283,7 @@
                     
                     item.appendChild(link);
                     item.appendChild(category);
-                    item.appendChild(price);
+                    item.appendChild(priceContainer); // Agregar el contenedor de precios
                     item.appendChild(title);
                     item.appendChild(ul);
                     item.appendChild(mainButton);

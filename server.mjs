@@ -1,6 +1,7 @@
 import 'dotenv/config'
+import path from 'path';
 
-const __dirname = import.meta.dirname;
+const __dirname = path.resolve();
 
 
 import express from "express";
@@ -27,11 +28,11 @@ import mysql from 'mysql2/promise';
 const apiKey = process.env.APiKeyopenweather;
 
 // Mover la función getCMFData antes de su uso
-async function getCMFData(apiKey2=process.env.APikeyCMF) {
+async function getCMFData(apiKey2 = process.env.APikeyCMF) {
   const urls = {
-    dolar: `https://api.cmfchile.cl/api-sbifv3/recursos_api/dolar?apikey=${apiKey2}&formato=xml`,
-    uf: `https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=${apiKey2}&formato=xml`,
-    euro: `https://api.cmfchile.cl/api-sbifv3/recursos_api/euro?apikey=${apiKey2}&formato=xml`
+    dolar: `https://api.cmfchile.cl/api-sbifv3/recursos_api/dolar?apikey=${apiKey2}&formato=json`,
+    uf: `https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=${apiKey2}&formato=json`,
+    euro: `https://api.cmfchile.cl/api-sbifv3/recursos_api/euro?apikey=${apiKey2}&formato=json`
   };
 
   try {
@@ -41,21 +42,16 @@ async function getCMFData(apiKey2=process.env.APikeyCMF) {
       fetch(urls.euro)
     ]);
 
-    const [dolarText, ufText, euroText] = await Promise.all([
-      dolarResponse.text(),
-      ufResponse.text(),
-      euroResponse.text()
-    ]);
-
     const [dolarJson, ufJson, euroJson] = await Promise.all([
-      parseStringPromise(dolarText),
-      parseStringPromise(ufText),
-      parseStringPromise(euroText)
+      dolarResponse.json(),
+      ufResponse.json(),
+      euroResponse.json()
     ]);
 
-    const dolarValue = parseFloat(dolarJson.IndicadoresFinancieros.Dolares[0].Dolar[0].Valor[0].replace(',', '.'));
-    const ufValue = parseFloat(ufJson.IndicadoresFinancieros.UFs[0].UF[0].Valor[0].replace('.', '').replace(',', '.'));
-    const euroValue = parseFloat(euroJson.IndicadoresFinancieros.Euros[0].Euro[0].Valor[0].replace(',', '.'));
+    // Extraer valores del JSON
+    const dolarValue = parseFloat(dolarJson.Dolares[0].Valor.replace(',', '.'));
+    const ufValue = parseFloat(ufJson.UFs[0].Valor.replace('.', '').replace(',', '.'));
+    const euroValue = parseFloat(euroJson.Euros[0].Valor.replace(',', '.'));
 
     return {
       Dolar: dolarValue,
@@ -76,6 +72,53 @@ async function getCMFData(apiKey2=process.env.APikeyCMF) {
 
 // Obtener valores de CMF desde la API
 const CMF = await getCMFData();
+
+// Función para convertir precios entre monedas
+function convertirPrecio(precio, monedaOrigen, monedaDestino, tasasCambio) {
+  if (monedaOrigen === monedaDestino) {
+    return precio;
+  }
+  
+  // Convertir todo a CLP primero
+  let precioEnCLP = precio;
+  if (monedaOrigen === 'USD') {
+    precioEnCLP = precio * tasasCambio.Dolar;
+  } else if (monedaOrigen === 'EUR') {
+    precioEnCLP = precio * tasasCambio.EUR;
+  } else if (monedaOrigen === 'UF') {
+    precioEnCLP = precio * tasasCambio.UF;
+  }
+  
+  // Convertir de CLP a la moneda destino
+  if (monedaDestino === 'USD') {
+    return precioEnCLP / tasasCambio.Dolar;
+  } else if (monedaDestino === 'EUR') {
+    return precioEnCLP / tasasCambio.EUR;
+  } else if (monedaDestino === 'UF') {
+    return precioEnCLP / tasasCambio.UF;
+  }
+  
+  return precioEnCLP;
+}
+
+// Función para formatear precio según la moneda
+function formatearPrecio(precio, moneda) {
+  const opciones = {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  };
+  
+  switch (moneda) {
+    case 'USD':
+      return `US$ ${precio.toFixed(2)}`;
+    case 'EUR':
+      return `€ ${precio.toFixed(2)}`;
+    case 'UF':
+      return `UF ${precio.toFixed(4)}`;
+    default:
+      return `$ ${precio.toLocaleString('es-CL', opciones)}`;
+  }
+}
 
 import pkg from 'transbank-sdk';
 const { WebpayPlus, Options, Environment } = pkg;
@@ -162,9 +205,9 @@ function isAuthenticated(req, res, next) {
 
 
 // Configuración de archivos estáticos - mejorada para Docker
-app.use('/css', express.static('/app/public/css'));
-app.use('/assets', express.static('/app/public/assets'));
-app.use(express.static('/app/public'));
+app.use('/css', express.static(path.join(__dirname, 'public/css')));
+app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -249,10 +292,43 @@ app.get('/api/productos/', async (req, res) => {
       return producto;
     });
 
-    result = result.map(producto => ({ ...producto, CMF }));
+    // Agregar información de CMF y conversiones de moneda
+    result = result.map(producto => {
+      const productoConCMF = { ...producto, CMF };
+      
+      // Asegurarse de que el precio sea un número
+      const precioNumerico = parseFloat(producto.Precio);
+
+      // Agregar precios convertidos
+      productoConCMF.PrecioOriginal = precioNumerico;
+      productoConCMF.MonedaOriginal = producto.Moneda || 'CLP';
+      
+      // Convertir a USD para mostrar como alternativa
+      if (producto.Moneda !== 'USD') {
+        productoConCMF.PrecioUSD = convertirPrecio(precioNumerico, producto.Moneda || 'CLP', 'USD', CMF);
+      }
+      
+      // Convertir a CLP si no está en CLP
+      if (producto.Moneda !== 'CLP') {
+        productoConCMF.PrecioCLP = convertirPrecio(precioNumerico, producto.Moneda || 'CLP', 'CLP', CMF);
+      }
+      
+      // Agregar precios formateados
+      productoConCMF.PrecioFormateado = formatearPrecio(precioNumerico, producto.Moneda || 'CLP');
+      if (productoConCMF.PrecioUSD) {
+        productoConCMF.PrecioUSDFormateado = formatearPrecio(productoConCMF.PrecioUSD, 'USD');
+      }
+      if (productoConCMF.PrecioCLP) {
+        productoConCMF.PrecioCLPFormateado = formatearPrecio(productoConCMF.PrecioCLP, 'CLP');
+      }
+      
+      return productoConCMF;
+    });
+
     res.send(result);
 
   } catch (err) {
+    console.error('Error en /api/productos:', err);
     res.send({ "error": "Error interno" });
   }
 });
@@ -371,13 +447,13 @@ app.get('/api/tipos/', async(req,res)=>{
 
 app.post('/api/crearProducto', upload.single('Img'), async (req, res) => {
   try {
-    const { Nombre, tipoInput, Precio, Cantidad,CantidadCentral,CantidadNorte,CantidadCentro, Peso, Color, Garantia, Modelo } = req.body;
+    const { Nombre, tipoInput, Precio, Moneda, Cantidad, CantidadCentral, CantidadNorte, CantidadCentro, Peso, Color, Garantia, Modelo } = req.body;
     const Img = req.file ? req.file.buffer : null;
 
     const query = `
-      INSERT INTO productos (Nombre,ID_Tipo,Precio,Cantidad,Stock_Central,Stock_Norte,Stock_Centro,Peso,Color,Garantia,Modelo,Img) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);`;
+      INSERT INTO productos (Nombre,ID_Tipo,Precio,Moneda,Cantidad,Stock_Central,Stock_Norte,Stock_Centro,Peso,Color,Garantia,Modelo,Img) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);`;
 
-    await poolFerremax.query(query, [Nombre, tipoInput, Precio, Cantidad,CantidadCentral,CantidadNorte,CantidadCentro, Peso, Color, Garantia, Modelo, Img]);
+    await poolFerremax.query(query, [Nombre, tipoInput, Precio, Moneda || 'CLP', Cantidad, CantidadCentral, CantidadNorte, CantidadCentro, Peso, Color, Garantia, Modelo, Img]);
 
     res.status(200).json({ message: 'Producto creado exitosamente' });
   } catch (err) {
@@ -584,7 +660,7 @@ app.get('/orden/:numeroOrden', async (req, res) => {
 
 app.post('/api/actualizarProducto', upload.single('Img'), async (req, res) => {
   try {
-    const { ID, Nombre, ID_Tipo, Precio, Cantidad,Stock_Central,Stock_Norte, Stock_Centro, Peso, Color, Garantia, Modelo } = req.body;
+    const { ID, Nombre, ID_Tipo, Precio, Moneda, Cantidad, Stock_Central, Stock_Norte, Stock_Centro, Peso, Color, Garantia, Modelo } = req.body;
     const Img = req.file ? req.file.buffer : null;
 
     let query = `
@@ -593,6 +669,7 @@ app.post('/api/actualizarProducto', upload.single('Img'), async (req, res) => {
         Nombre = ?, 
         ID_Tipo = ?, 
         Precio = ?, 
+        Moneda = ?,
         Cantidad = ?,
         Stock_Central = ?, 
         Stock_Norte = ?,
@@ -603,16 +680,17 @@ app.post('/api/actualizarProducto', upload.single('Img'), async (req, res) => {
         Modelo = ?
       WHERE ID = ?`;
 
-    const params = [Nombre, ID_Tipo, Precio, Cantidad,Stock_Central, Stock_Norte,Stock_Centro, Peso, Color, Garantia, Modelo, ID];
+    const params = [Nombre, ID_Tipo, Precio, Moneda || 'CLP', Cantidad, Stock_Central, Stock_Norte, Stock_Centro, Peso, Color, Garantia, Modelo, ID];
 
     if (Img) {
-      const paramsImg = [Nombre, ID_Tipo, Precio, Cantidad,Stock_Central, Stock_Norte,Stock_Centro, Peso, Color, Garantia, Modelo, Img, ID];
+      const paramsImg = [Nombre, ID_Tipo, Precio, Moneda || 'CLP', Cantidad, Stock_Central, Stock_Norte, Stock_Centro, Peso, Color, Garantia, Modelo, Img, ID];
       query = `
         UPDATE productos
         SET 
           Nombre = ?, 
           ID_Tipo = ?, 
           Precio = ?, 
+          Moneda = ?,
           Cantidad = ?,
           Stock_Central = ?, 
           Stock_Centro = ?, 
@@ -626,8 +704,6 @@ app.post('/api/actualizarProducto', upload.single('Img'), async (req, res) => {
         await poolFerremax.query(query, paramsImg);
         res.status(200).json({ message: 'Producto actualizado exitosamente' });
         return
-
-
     }
 
     await poolFerremax.query(query, params);

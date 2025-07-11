@@ -1,5 +1,17 @@
 <div class="marquee">
-    <div id="barraQueSeMueve" class="barraQueSeMueve"></div>
+    <div id="barraQueSeMueve" class="barraQueSeMueve">
+      <% if (typeof CMF !== 'undefined') { %>
+        <% const esDefault = CMF.Dolar === 950 && CMF.UF === 37500 && CMF.EUR === 1050; %>
+        <span style="margin-right: 40px;">💲 Dólar: <%= CMF.Dolar.toLocaleString('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %> CLP</span>
+        <span style="margin-right: 40px;">💸 UF: <%= CMF.UF.toLocaleString('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %> CLP</span>
+        <span style="margin-right: 40px;">€ Euro: <%= CMF.EUR.toLocaleString('es-CL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %> CLP</span>
+        <% if (esDefault) { %>
+          <span style="color: yellow; background: #b00; padding: 2px 10px; border-radius: 5px; margin-left: 30px; font-weight: bold;">ADVERTENCIA: Mostrando valores por defecto, la API CMF no respondió.</span>
+        <% } %>
+      <% } else { %>
+        <span>No hay datos económicos disponibles.</span>
+      <% } %>
+    </div>
   </div> 
   <header class="header-area header-sticky">
     <div class="container">
