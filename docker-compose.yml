@@ -67,9 +67,8 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: mysql
-      PMA_USER: root
-      PMA_PASSWORD: root123
-      MYSQL_ROOT_PASSWORD: root123
+      PMA_USER: ferremax_user
+      PMA_PASSWORD: ferremax_pass
     depends_on:
       mysql:
         condition: service_healthy
