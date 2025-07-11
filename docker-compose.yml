@@ -48,8 +48,8 @@ services:
       
       # Configuración de Webpay (para desarrollo)
       WEBPAY_ENVIRONMENT: DEVELOPMENT
-      WEBPAY_COMMERCE_CODE: 597055555532
-      WEBPAY_API_KEY: 579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C
+      WEBPAY_COMMERCE_CODE: tu
+      WEBPAY_API_KEY: tu_api_key_webpay
     depends_on:
       mysql:
         condition: service_healthy

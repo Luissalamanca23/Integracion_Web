@@ -9,332 +9,266 @@
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/bodeguero.css">
 
-
   <%- include('../modulos/head.ejs'); %>
-
-
 
 </head>
 
 <body>
 
+  <div class="dashboard">
+    <div class="left-side-bar">
+      <div class="menu">
+        <ul>
+          <li>
+            <i class="fa fa-edit"></i>
+            <span><a href="/dashboard">Productos</a></span>
+          </li>
+         
+          <li class="active">
+            <i class="fa fa-edit"></i>
+            <span>Bodeguero</span>
+          </li>
+          <li>
+            <i class="fa fa-edit"></i>
+            <span><a href="/logout">Cerrar Sesión</a></span>
+          </li>
 
-  <body>
-    <div class="dashboard">
-      <div class="left-side-bar">
-        <div class="menu">
-          <ul>
-            <li >
-              <i class="fa fa-edit"></i>
-              <span><a href="/dashboard">Productos</a></span>
-            </li>
-           
-            <li class="active">
-              <i class="fa fa-edit"></i>
-              <span><a href="/bodeguero">Bodeguero</a></span>
-            </li>
-
-            <li>
-              <i class="fa fa-edit"></i>
-              <span><a href="/logout">Cerrar Sesión</a></span>
-            </li>
-
-          </ul>
-        </div>
-      </div>
-      <div id="contenedorPrincipal" class="main-container">
-
-       
-       
-
-        
+        </ul>
       </div>
     </div>
+    <div id="contenedorPrincipal" class="main-container">
 
+    </div>
+  </div>
 
-  </body>
+  <%- include('../modulos/scripts.ejs');%>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        obtenerBoletas();
+    })
+    
+    async function obtenerBoletas(url='/api/ordenes/'){
+        try {
+            const response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            
+            const contenedorPrincipal = document.getElementById('contenedorPrincipal');
+            contenedorPrincipal.classList.add('main-container');
+            contenedorPrincipal.innerHTML = ''; 
 
+            const titulo = document.createElement('h2');
+            titulo.textContent = 'Gestión de Pedidos';
+            titulo.style.margin = '20px';
+            titulo.style.color = '#333';
+            contenedorPrincipal.appendChild(titulo);
 
+            if (!result || result.length === 0) {
+                const mensajeVacio = document.createElement('div');
+                mensajeVacio.style.textAlign = 'center';
+                mensajeVacio.style.padding = '40px';
+                mensajeVacio.style.color = '#6c757d';
+                mensajeVacio.innerHTML = '<h3>No hay pedidos disponibles</h3><p>Cuando los clientes realicen pedidos, aparecerán aquí para su gestión.</p>';
+                contenedorPrincipal.appendChild(mensajeVacio);
+                return;
+            }
 
-    <%- include('../modulos/scripts.ejs');%>
-
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            obtenerBoletas();
-        })
-        
-        async function obtenerBoletas(url='/api/ordenes/'){
-            try {
-                const response = await fetch(url);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const result = await response.json();
-                console.log('Pedidos obtenidos:', result);
-                
-                const contenedorPrincipal = document.getElementById('contenedorPrincipal');
-                contenedorPrincipal.classList.add('main-container');
-                contenedorPrincipal.innerHTML = ''; // Limpiar contenido previo
-
-                // Agregar título
-                const titulo = document.createElement('h2');
-                titulo.textContent = 'Gestión de Pedidos';
-                titulo.style.margin = '20px';
-                titulo.style.color = '#333';
-                contenedorPrincipal.appendChild(titulo);
-
-                // Verificar si hay pedidos
-                if (!result || result.length === 0) {
-                    const mensajeVacio = document.createElement('div');
-                    mensajeVacio.style.textAlign = 'center';
-                    mensajeVacio.style.padding = '40px';
-                    mensajeVacio.style.color = '#6c757d';
-                    mensajeVacio.innerHTML = '' +
-                        '<h3>No hay pedidos disponibles</h3>' +
-                        '<p>Cuando los clientes realicen pedidos, aparecerán aquí para su gestión.</p>';
-                    contenedorPrincipal.appendChild(mensajeVacio);
-                    return;
-                }
-
-                result.forEach(element => {
-                    try {
-                        // Función mejorada para parsear JSON
-                        const parseJSONField = (field) => {
-                            try {
-                                // Si ya es un array, devolverlo
-                                if (Array.isArray(field)) return field;
-                                
-                                // Si es una cadena, intentar parsearla
-                                if (typeof field === 'string') {
-                                    // Limpiar caracteres especiales y espacios
-                                    let cleaned = field.trim();
-                                    // Si no está entre corchetes, añadirlos
-                                    if (!cleaned.startsWith('[')) {
-                                        cleaned = `["${cleaned}"]`;
-                                    }
-                                    // Reemplazar comillas simples por dobles si es necesario
-                                    cleaned = cleaned.replace(/'/g, '"');
-                                    // Intentar parsear
-                                    return JSON.parse(cleaned);
+            result.forEach(element => {
+                try {
+                    const parseJSONField = (field) => {
+                        try {
+                            if (Array.isArray(field)) return field;
+                            if (typeof field === 'string') {
+                                let cleaned = field.trim();
+                                if (!cleaned.startsWith('[')) {
+                                    cleaned = `["${cleaned}"]`;
                                 }
-                                
-                                // Si no es string ni array, devolver array vacío
-                                return [];
-                            } catch (error) {
-                                console.error('Error parseando campo JSON:', error, field);
-                                // Si falla el parseo, intentar como array simple
-                                if (typeof field === 'string') {
-                                    return [field];
-                                }
-                                return [];
+                                cleaned = cleaned.replace(/'/g, '"');
+                                return JSON.parse(cleaned);
                             }
-                        };
-
-                        // Parsear los datos JSON de Items, Precios y Cantidades usando la función mejorada
-                        const items = parseJSONField(element.Items);
-                        const precios = parseJSONField(element.Precios);
-                        const cantidades = parseJSONField(element.Cantidades);
-
-                        console.log('Pedido procesado:', {
-                            orden: element.Numero_Orden,
-                            items: items,
-                            precios: precios,
-                            cantidades: cantidades
-                        });
-
-                        const divRow = document.createElement('div');
-                        divRow.classList.add('row', 'mt-3');
-                        divRow.style.margin = '10px';
-
-                        const divContenedorOrden = document.createElement('div');
-                        divContenedorOrden.classList.add('contenedorOrden');
-                        divContenedorOrden.style.border = '1px solid #ddd';
-                        divContenedorOrden.style.borderRadius = '8px';
-                        divContenedorOrden.style.padding = '20px';
-                        divContenedorOrden.style.backgroundColor = '#f9f9f9';
-                        divContenedorOrden.style.marginBottom = '15px';
-
-                        const tituloOrden = document.createElement('h3');
-                        tituloOrden.innerHTML = 'Pedido #' + element.Numero_Orden;
-                        tituloOrden.style.color = '#2c3e50';
-                        tituloOrden.style.marginBottom = '15px';
-
-                        // Información adicional del pedido
-                        const infoPedido = document.createElement('div');
-                        infoPedido.style.marginBottom = '15px';
-                        infoPedido.innerHTML = '' +
-                            '<p><strong>Fecha del Pedido:</strong> ' + new Date(element.Fecha_Actual).toLocaleDateString() + '</p>' +
-                            '<p><strong>Fecha de Despacho:</strong> ' + new Date(element.Fecha_Despacho).toLocaleDateString() + '</p>' +
-                            '<p><strong>Total:</strong> $' + element.Total + '</p>' +
-                            '<p><strong>Total con Despacho:</strong> $' + element.Total_Despacho + '</p>';
-
-                        // Estado actual
-                        const estadoActual = element.Estado || (element.Aceptado === 1 ? 'En Despacho' : 'Pendiente');
-                        const estadoDiv = document.createElement('div');
-                        estadoDiv.style.marginBottom = '15px';
-                        estadoDiv.innerHTML = '<p><strong>Estado Actual:</strong> <span style="color: #e74c3c; font-weight: bold;">' + estadoActual + '</span></p>';
-
-                        // Dropdown para cambiar estado
-                        const estadoContainer = document.createElement('div');
-                        estadoContainer.style.marginBottom = '15px';
-                        
-                        const estadoLabel = document.createElement('label');
-                        estadoLabel.textContent = 'Cambiar Estado: ';
-                        estadoLabel.style.fontWeight = 'bold';
-                        estadoLabel.style.marginRight = '10px';
-
-                        const estadoSelect = document.createElement('select');
-                        estadoSelect.classList.add('form-select');
-                        estadoSelect.style.width = '200px';
-                        estadoSelect.style.display = 'inline-block';
-                        estadoSelect.style.marginRight = '10px';
-
-                        const estados = ['Pendiente', 'En Preparación', 'En Despacho', 'Entregado', 'Cancelado'];
-                        estados.forEach(estado => {
-                            const option = document.createElement('option');
-                            option.value = estado;
-                            option.textContent = estado;
-                            if (estado === estadoActual) {
-                                option.selected = true;
+                            return [];
+                        } catch (error) {
+                            if (typeof field === 'string') {
+                                return [field];
                             }
-                            estadoSelect.appendChild(option);
-                        });
-
-                        const actualizarBtn = document.createElement('button');
-                        actualizarBtn.classList.add('btn', 'btn-primary');
-                        actualizarBtn.textContent = 'Actualizar Estado';
-                        actualizarBtn.addEventListener('click', () => {
-                            cambiarEstadoOrden(element.Numero_Orden, estadoSelect.value, estadoDiv);
-                        });
-
-                        estadoContainer.appendChild(estadoLabel);
-                        estadoContainer.appendChild(estadoSelect);
-                        estadoContainer.appendChild(actualizarBtn);
-
-                        // Lista de productos
-                        const productosTitle = document.createElement('h4');
-                        productosTitle.textContent = 'Productos del Pedido:';
-                        productosTitle.style.color = '#34495e';
-                        productosTitle.style.marginTop = '20px';
-                        productosTitle.style.marginBottom = '10px';
-
-                        const detallesItems = document.createElement('ul');
-                        detallesItems.style.listStyle = 'none';
-                        detallesItems.style.padding = '0';
-                        
-                        // Asegurar que todos los arrays tengan la misma longitud
-                        const maxLength = Math.max(items.length, precios.length, cantidades.length);
-                        
-                        for (let index = 0; index < maxLength; index++) {
-                            const item = items[index] || 'Producto no especificado';
-                            const precio = precios[index] || '0';
-                            const cantidad = cantidades[index] || '0';
-                            
-                            const li = document.createElement('li');
-                            li.style.padding = '8px';
-                            li.style.backgroundColor = '#ecf0f1';
-                            li.style.margin = '5px 0';
-                            li.style.borderRadius = '4px';
-                            li.innerHTML = '<strong>' + item + '</strong> - Precio: $' + precio + ' - Cantidad: ' + cantidad;
-                            detallesItems.appendChild(li);
+                            return [];
                         }
+                    };
 
-                        divContenedorOrden.appendChild(tituloOrden);
-                        divContenedorOrden.appendChild(infoPedido);
-                        divContenedorOrden.appendChild(estadoDiv);
-                        divContenedorOrden.appendChild(estadoContainer);
-                        divContenedorOrden.appendChild(productosTitle);
-                        divContenedorOrden.appendChild(detallesItems);
-                        divRow.appendChild(divContenedorOrden);
-                        contenedorPrincipal.appendChild(divRow);
-                    } catch (parseError) {
-                        console.error('Error procesando pedido:', parseError, element);
-                        
-                        // Mostrar pedido con error pero con información básica
-                        const divRow = document.createElement('div');
-                        divRow.classList.add('row', 'mt-3');
-                        divRow.style.margin = '10px';
+                    const items = parseJSONField(element.Items);
+                    const precios = parseJSONField(element.Precios);
+                    const cantidades = parseJSONField(element.Cantidades);
 
-                        const divContenedorOrden = document.createElement('div');
-                        divContenedorOrden.classList.add('contenedorOrden');
-                        divContenedorOrden.style.border = '1px solid #dc3545';
-                        divContenedorOrden.style.borderRadius = '8px';
-                        divContenedorOrden.style.padding = '20px';
-                        divContenedorOrden.style.backgroundColor = '#f8d7da';
-                        divContenedorOrden.style.marginBottom = '15px';
+                    const divRow = document.createElement('div');
+                    divRow.classList.add('row', 'mt-3');
+                    divRow.style.margin = '10px';
 
-                        divContenedorOrden.innerHTML = '' +
-                            '<h3 style="color: #721c24;">Pedido #' + element.Numero_Orden + ' (Error de datos)</h3>' +
-                            '<p><strong>Error:</strong> No se pudieron procesar los datos del pedido</p>' +
-                            '<p><strong>Total:</strong> $' + element.Total + '</p>' +
-                            '<p><strong>Estado:</strong> ' + (element.Estado || (element.Aceptado === 1 ? 'En Despacho' : 'Pendiente')) + '</p>';
-                        
-                        divRow.appendChild(divContenedorOrden);
-                        contenedorPrincipal.appendChild(divRow);
-                    }
-                });
-            } catch (error) {
-                console.error('Error obteniendo pedidos:', error);
-                const contenedorPrincipal = document.getElementById('contenedorPrincipal');
-                contenedorPrincipal.innerHTML = '' +
-                    '<div style="text-align: center; padding: 40px; color: #dc3545;">' +
-                        '<h3>Error al cargar los pedidos</h3>' +
-                        '<p>No se pudieron cargar los pedidos. Por favor, verifique la conexión.</p>' +
-                        '<button onclick="obtenerBoletas()" class="btn btn-primary">Reintentar</button>' +
-                    '</div>';
-            }
-        }
+                    const divContenedorOrden = document.createElement('div');
+                    divContenedorOrden.classList.add('contenedorOrden');
+                    divContenedorOrden.style.border = '1px solid #ddd';
+                    divContenedorOrden.style.borderRadius = '8px';
+                    divContenedorOrden.style.padding = '20px';
+                    divContenedorOrden.style.backgroundColor = '#f9f9f9';
+                    divContenedorOrden.style.marginBottom = '15px';
 
-        async function cambiarEstadoOrden(numeroOrden, nuevoEstado, estadoDiv) {
-            try {
-                console.log('Enviando petición para cambiar estado:', { numeroOrden, nuevoEstado });
-                
-                const response = await fetch('/api/estadoOrden', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ numeroOrden, nuevoEstado })
-                });
+                    const tituloOrden = document.createElement('h3');
+                    tituloOrden.innerHTML = 'Pedido #' + element.Numero_Orden;
+                    tituloOrden.style.color = '#2c3e50';
+                    tituloOrden.style.marginBottom = '15px';
 
-                console.log('Respuesta del servidor:', response.status, response.statusText);
-                
-                if (!response.ok) {
-                    // Si la respuesta no es OK, intentar obtener el mensaje de error
-                    const errorResult = await response.json();
-                    console.error('Error HTTP:', errorResult);
-                    alert('Error al actualizar el estado: ' + (errorResult.error || 'Error del servidor'));
-                    return;
-                }
-                
-                const result = await response.json();
-                console.log('Resultado:', result);
-                
-                if (result.success) {
-                    // Actualizar la visualización del estado
-                    estadoDiv.innerHTML = '<p><strong>Estado Actual:</strong> <span style="color: #27ae60; font-weight: bold;">' + nuevoEstado + '</span></p>';
+                    const infoPedido = document.createElement('div');
+                    infoPedido.style.marginBottom = '15px';
+                    infoPedido.innerHTML = '<p><strong>Fecha del Pedido:</strong> ' + new Date(element.Fecha_Actual).toLocaleDateString() + '</p>' +
+                                         '<p><strong>Fecha de Despacho:</strong> ' + new Date(element.Fecha_Despacho).toLocaleDateString() + '</p>' +
+                                         '<p><strong>Total:</strong> $' + element.Total + '</p>' +
+                                         '<p><strong>Total con Despacho:</strong> $' + element.Total_Despacho + '</p>';
+
+                    const estadoActual = element.Estado || (element.Aceptado === 1 ? 'En Despacho' : 'Pendiente');
+                    const estadoDiv = document.createElement('div');
+                    estadoDiv.style.marginBottom = '15px';
+                    estadoDiv.innerHTML = '<p><strong>Estado Actual:</strong> <span style="color: #e74c3c; font-weight: bold;">' + estadoActual + '</span></p>';
+
+                    const estadoContainer = document.createElement('div');
+                    estadoContainer.style.marginBottom = '15px';
                     
-                    let mensaje = 'Estado actualizado exitosamente a: ' + nuevoEstado;
-                    if (result.note) {
-                        mensaje += '\n\nNota: ' + result.note;
-                    }
-                    alert(mensaje);
-                } else {
-                    console.error('Error en la respuesta:', result);
-                    alert('Error al actualizar el estado: ' + (result.error || 'Error desconocido'));
-                }
-            } catch (error) {
-                console.error('Error de red o parsing:', error);
-                alert('Error de conexión al actualizar el estado: ' + error.message);
-            }
-        }
-    </script>
+                    const estadoLabel = document.createElement('label');
+                    estadoLabel.textContent = 'Cambiar Estado: ';
+                    estadoLabel.style.fontWeight = 'bold';
+                    estadoLabel.style.marginRight = '10px';
 
+                    const estadoSelect = document.createElement('select');
+                    estadoSelect.classList.add('form-select');
+                    estadoSelect.style.width = '200px';
+                    estadoSelect.style.display = 'inline-block';
+                    estadoSelect.style.marginRight = '10px';
+
+                    const estados = ['Pendiente', 'En Preparación', 'En Despacho', 'Entregado', 'Cancelado'];
+                    estados.forEach(estado => {
+                        const option = document.createElement('option');
+                        option.value = estado;
+                        option.textContent = estado;
+                        if (estado === estadoActual) {
+                            option.selected = true;
+                        }
+                        estadoSelect.appendChild(option);
+                    });
+
+                    const actualizarBtn = document.createElement('button');
+                    actualizarBtn.classList.add('btn', 'btn-primary');
+                    actualizarBtn.textContent = 'Actualizar Estado';
+                    actualizarBtn.addEventListener('click', () => {
+                        cambiarEstadoOrden(element.Numero_Orden, estadoSelect.value, estadoDiv);
+                    });
+
+                    estadoContainer.appendChild(estadoLabel);
+                    estadoContainer.appendChild(estadoSelect);
+                    estadoContainer.appendChild(actualizarBtn);
+
+                    const productosTitle = document.createElement('h4');
+                    productosTitle.textContent = 'Productos del Pedido:';
+                    productosTitle.style.color = '#34495e';
+                    productosTitle.style.marginTop = '20px';
+                    productosTitle.style.marginBottom = '10px';
+
+                    const detallesItems = document.createElement('ul');
+                    detallesItems.style.listStyle = 'none';
+                    detallesItems.style.padding = '0';
+                    
+                    const maxLength = Math.max(items.length, precios.length, cantidades.length);
+                    
+                    for (let index = 0; index < maxLength; index++) {
+                        const item = items[index] || 'Producto no especificado';
+                        const precio = precios[index] || '0';
+                        const cantidad = cantidades[index] || '0';
+                        
+                        const li = document.createElement('li');
+                        li.style.padding = '8px';
+                        li.style.backgroundColor = '#ecf0f1';
+                        li.style.margin = '5px 0';
+                        li.style.borderRadius = '4px';
+                        li.innerHTML = '<strong>' + item + '</strong> - Precio: $' + precio + ' - Cantidad: ' + cantidad;
+                        detallesItems.appendChild(li);
+                    }
+
+                    divContenedorOrden.appendChild(tituloOrden);
+                    divContenedorOrden.appendChild(infoPedido);
+                    divContenedorOrden.appendChild(estadoDiv);
+                    divContenedorOrden.appendChild(estadoContainer);
+                    divContenedorOrden.appendChild(productosTitle);
+                    divContenedorOrden.appendChild(detallesItems);
+                    divRow.appendChild(divContenedorOrden);
+                    contenedorPrincipal.appendChild(divRow);
+                } catch (parseError) {
+                    const divRow = document.createElement('div');
+                    divRow.classList.add('row', 'mt-3');
+                    divRow.style.margin = '10px';
+
+                    const divContenedorOrden = document.createElement('div');
+                    divContenedorOrden.classList.add('contenedorOrden');
+                    divContenedorOrden.style.border = '1px solid #dc3545';
+                    divContenedorOrden.style.borderRadius = '8px';
+                    divContenedorOrden.style.padding = '20px';
+                    divContenedorOrden.style.backgroundColor = '#f8d7da';
+                    divContenedorOrden.style.marginBottom = '15px';
+
+                    divContenedorOrden.innerHTML = '<h3>Pedido #' + element.Numero_Orden + ' (Error de datos)</h3>' +
+                                                 '<p><strong>Error:</strong> No se pudieron procesar los datos del pedido</p>' +
+                                                 '<p><strong>Total:</strong> $' + element.Total + '</p>' +
+                                                 '<p><strong>Estado:</strong> ' + (element.Estado || (element.Aceptado === 1 ? 'En Despacho' : 'Pendiente')) + '</p>';
+                    
+                    divRow.appendChild(divContenedorOrden);
+                    contenedorPrincipal.appendChild(divRow);
+                }
+            });
+        } catch (error) {
+            const contenedorPrincipal = document.getElementById('contenedorPrincipal');
+            contenedorPrincipal.innerHTML = '<div style="text-align: center; padding: 40px; color: #dc3545;">' +
+                                            '<h3>Error al cargar los pedidos</h3>' +
+                                            '<p>No se pudieron cargar los pedidos. Por favor, verifique la conexión.</p>' +
+                                            '<button onclick="obtenerBoletas()" class="btn btn-primary">Reintentar</button>' +
+                                        '</div>';
+        }
+    }
+
+    async function cambiarEstadoOrden(numeroOrden, nuevoEstado, estadoDiv) {
+        try {
+            const response = await fetch('/api/estadoOrden', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ numeroOrden, nuevoEstado })
+            });
+
+            if (!response.ok) {
+                const errorResult = await response.json();
+                alert('Error al actualizar el estado: ' + (errorResult.error || 'Error del servidor'));
+                return;
+            }
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                estadoDiv.innerHTML = '<p><strong>Estado Actual:</strong> <span style="color: #27ae60; font-weight: bold;">' + nuevoEstado + '</span></p>';
+                
+                let mensaje = 'Estado actualizado exitosamente a: ' + nuevoEstado;
+                if (result.note) {
+                    mensaje += '\\n\\nNota: ' + result.note;
+                }
+                alert(mensaje);
+            } else {
+                alert('Error al actualizar el estado: ' + (result.error || 'Error desconocido'));
+            }
+        } catch (error) {
+            alert('Error de conexión al actualizar el estado: ' + error.message);
+        }
+    }
+  </script>
 
 </body>
 

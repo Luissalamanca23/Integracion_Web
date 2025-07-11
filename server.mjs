@@ -212,6 +212,42 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+// Middleware para restringir el acceso del bodeguero solo a su página
+function restrictBodeguero(req, res, next) {
+  // Verificar si el usuario está autenticado y es un bodeguero
+  if (req.session.isAuthenticated && req.session.user && req.session.user.rol === 'bodeguero') {
+    
+    // Lista de rutas permitidas para el bodeguero
+    const allowedPaths = [
+      '/bodeguero',
+      '/logout',
+      '/api/ordenes/',
+      '/api/estadoOrden'
+    ];
+    
+    // Prefijos permitidos para recursos estáticos
+    const allowedPrefixes = ['/css/', '/assets/'];
+
+    // Comprobar si la ruta solicitada está permitida
+    const isPathAllowed = allowedPaths.includes(req.path);
+    const isPrefixAllowed = allowedPrefixes.some(prefix => req.path.startsWith(prefix));
+
+    // Si la ruta está permitida, continuar
+    if (isPathAllowed || isPrefixAllowed) {
+      return next();
+    } else {
+      // Si no, redirigir a la página del bodeguero
+      return res.redirect('/bodeguero');
+    }
+  }
+  
+  // Para otros usuarios o no autenticados, continuar sin restricciones
+  next();
+}
+
+// Aplicar el middleware a toda la aplicación
+app.use(restrictBodeguero);
+
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -230,9 +266,13 @@ app.get('/productos',async (req, res) => {
 });
 app.get('/bodeguero', isAuthenticated, async (req, res) => {
   try {
-    res.render('views/bodeguero.ejs', { CMF });
+    // Replicamos la misma lógica del dashboard por ahora
+    // El bodeguero necesita ver los tipos de producto para la gestión
+    let [results] = await poolFerremax.query('SELECT * FROM tipo_producto;');
+    res.render('views/bodeguero.ejs', { CMF, tipos: results });
   } catch (err) {
     console.log(err);
+    res.redirect('/login'); // O a una página de error
   }
 });
 
@@ -955,6 +995,8 @@ app.post('/login', async (req, res) => {
       // Redirigir según el rol del usuario
       if (user.rol === 'administrador') {
         res.redirect('/dashboard');
+      } else if (user.rol === 'bodeguero') {
+        res.redirect('/bodeguero');
       } else {
         // Para usuarios clientes, redirigir a la página principal
         res.redirect('/?login=success');
