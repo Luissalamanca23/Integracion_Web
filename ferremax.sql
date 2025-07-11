@@ -94,7 +94,9 @@ INSERT INTO tipo_producto (Nombre) VALUES
 
 -- Paso 10: Crear un usuario administrador
 INSERT INTO usuario (username, password, rol) VALUES
-('admin', 'f5729@ad', 'administrador');
+('admin', 'admin1', 'administrador'),
+('bodeguero', 'bodeguero1', 'bodeguero');
+
 
 -- Paso 11: Agregar columna Estado a la tabla Boletas si no existe
 ALTER TABLE Boletas ADD COLUMN IF NOT EXISTS Estado VARCHAR(50) DEFAULT 'Pendiente';
